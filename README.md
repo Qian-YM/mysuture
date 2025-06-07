@@ -8,6 +8,8 @@ two highlights are:
 
 We name it SUTURE in the hope that it can be surgically precise, while being able to stitch multiple syscalls/entry functions together to construct high-order data flows. For more details please refer to our paper: [Statically Discovering High-Order Taint Style Vulnerabilities in OS Kernels](https://github.com/seclab-ucr/SUTURE/raw/main/docs/suture-ccs21.pdf) in *ACM CCS'21*.
 
+Also check our static cross-entry UAF detector based on SUTURE, capable of escape-fetch based cross-entry alias analysis and partial-order based systematic vulnerability validation: [UAFX](https://github.com/uafx/uafx)
+
 ## 0x0 Setup  
 
 First clone the repo:  
