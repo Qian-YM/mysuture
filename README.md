@@ -10,6 +10,8 @@ We name it SUTURE in the hope that it can be surgically precise, while being abl
 
 Also check our static cross-entry UAF detector based on SUTURE, capable of escape-fetch based cross-entry alias analysis and partial-order based systematic vulnerability validation: [UAFX](https://github.com/uafx/uafx)
 
+It's an era of AI! How can we utilize the latest AI to enhance the accuracy and performance of our analyzer? Check our ASE'25 paper on this topic, preprint [here](https://arxiv.org/pdf/2504.11711)
+
 ## 0x0 Setup  
 
 First clone the repo:  
