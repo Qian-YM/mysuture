@@ -68,12 +68,11 @@ namespace DRCHECKER {
         Value *srcPointer = I.getPointerOperand();
 
 // ========================================================================================================================
+        bool if_global = false;
+        bool if_taint = false;
         Value *ptr = I.getPointerOperand();
         Value *base = ptr;
         dbgs() << "[DEBUG] ptr = " << InstructionUtils::getValueStr(base) << "\n";
-        
-        
-
         while (true) {
             base = base->stripPointerCasts();
             if (auto *gep = dyn_cast<GetElementPtrInst>(base)) {
@@ -96,9 +95,27 @@ namespace DRCHECKER {
                 //dbgs() << "[TAR] " << pto->targetObject << "\n";
                 if(pto && pto->targetObject && pto->targetObject->isGlobalObject()){
                     dbgs() << "\033[31m[TPD] store to global: " << "\033[0m\n";
+                    if_global = true;
                 }
                 
             }
+        }
+        Value *val = I.getValueOperand();
+        std::set<TaintFlag*> *valTaintInfo = TaintUtils::getTaintInfo(this->currState,
+            this->currFuncCallSites,
+            val);
+        if (valTaintInfo != nullptr) {
+            std::set<std::vector<InstLoc*>*> tchains;
+            this->currState.getAllUserTaintChains(valTaintInfo,tchains);
+            if (!tchains.empty()) {
+                dbgs() << "\033[31m[TPD] has taint value: " << "\033[0m\n";
+                if_taint = true;
+            }
+
+            
+        }
+        if (if_global && if_taint){
+            dbgs() << "\033[103;30m[VUL] Store taint value in global!\033[0m\n";
         }
 
 // ========================================================================================================================

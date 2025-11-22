@@ -1,1 +1,1 @@
-benchmark/conf_exp.log
+benchmark/conf_rand.log

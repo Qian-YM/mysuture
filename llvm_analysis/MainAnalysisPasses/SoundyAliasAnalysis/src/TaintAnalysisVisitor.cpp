@@ -619,6 +619,7 @@ namespace DRCHECKER {
     }
 
     void TaintAnalysisVisitor::propagateTaintToMemcpyArguments(std::vector<long> &memcpyArgs, CallInst &I) {
+        dbgs() << "\033[1;94m Processing memcpy function\n\033[0m";
 #ifdef DEBUG_CALL_INSTR
         dbgs() << "Processing memcpy function\n";
 #endif
@@ -636,7 +637,7 @@ namespace DRCHECKER {
         std::set<TaintFlag*>* newTaintInfo = this->mergeTaintInfo(mergeVals, &I);
         if(newTaintInfo != nullptr) {
 #ifdef DEBUG_CALL_INSTR
-            dbgs() << "Trying to memcpy from tainted argument\n";
+            dbgs() << "\033[1;94m Trying to memcpy from tainted argument\n\033[0m";
 #endif
             this->updateTaintInfo(dstOperand, newTaintInfo);
         }

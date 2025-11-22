@@ -5,66 +5,66 @@ For:fp: of type (0,1,0):void (%struct.data*, i8)**:void (%struct.data*, i8)*, St
 @mt = common dso_local local_unnamed_addr global %struct.mytype zeroinitializer, align 1, !dbg !9 NUM USES:0, TYPE:%struct.mytype*
 For:mt: of type (1,1,0):%struct.mytype*:%struct.mytype = type { [4096 x i8] }, Struct Type:1
 [33maddGlobalTaintSource(): Set the glob var as taint source: [0m@mt = common dso_local local_unnamed_addr global %struct.mytype zeroinitializer, align 1, !dbg !9
-AliasObject::setAsTaintSrc(): set as taint src, obj: 0x23a2a70
-FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x23a2b20, Host: 0x0
-FieldTaint::addTf(): +++TF: TAG(0x23a48e0):struct.mytype|-1(OBJ:0x23a2a70,G:1) TF(0x23a4800)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0x26dbaa0
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x26dbb50, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0x26dd910):struct.mytype|-1(OBJ:0x26dbaa0,G:1) TF(0x26dd800)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x23a2a70
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23a2a70 | 0
-AliasObject::addFieldTaintFlag(): %struct.mytype = type { [4096 x i8] } | 0 obj: 0x23a2a70
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x2376590, Host: 0x23a2a70
-FieldTaint::addTf(): +++TF: TAG(0x23a49c0):struct.mytype|0(OBJ:0x23a2a70,G:1) TF(0x23a49f0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x26dbaa0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26dbaa0 | 0
+AliasObject::addFieldTaintFlag(): %struct.mytype = type { [4096 x i8] } | 0 obj: 0x26dbaa0
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26af590, Host: 0x26dbaa0
+FieldTaint::addTf(): +++TF: TAG(0x26dd9f0):struct.mytype|0(OBJ:0x26dbaa0,G:1) TF(0x26dda20)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
 [33maddGlobalTaintSource(): Set the alias obj as taint source:
 [0mObject Type: %struct.mytype = type { [4096 x i8] }
  Object Ptr: @mt = common dso_local local_unnamed_addr global %struct.mytype zeroinitializer, align 1, !dbg !9
 [33maddGlobalTaintSource(): Set the glob var as taint source: [0m@fp = common dso_local local_unnamed_addr global void (%struct.data*, i8)* null, align 8, !dbg !30
-AliasObject::setAsTaintSrc(): set as taint src, obj: 0x23a26e0
-FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x23a2790, Host: 0x0
-FieldTaint::addTf(): +++TF: TAG(0x23a4c40):void (%struct.data*, i8)*|-1(OBJ:0x23a26e0,G:1) TF(0x23a4b10)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0x26db710
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x26db7c0, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0x26ddc70):void (%struct.data*, i8)*|-1(OBJ:0x26db710,G:1) TF(0x26ddb40)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x23a26e0
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23a26e0 | 0
-AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x23a26e0
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a4e70, Host: 0x23a26e0
-FieldTaint::addTf(): +++TF: TAG(0x23a4dd0):void (%struct.data*, i8)*|0(OBJ:0x23a26e0,G:1) TF(0x23a4e00)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x26db710
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26db710 | 0
+AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x26db710
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26ddea0, Host: 0x26db710
+FieldTaint::addTf(): +++TF: TAG(0x26dde00):void (%struct.data*, i8)*|0(OBJ:0x26db710,G:1) TF(0x26dde30)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
 [33maddGlobalTaintSource(): Set the alias obj as taint source:
 [0mObject Type: void (%struct.data*, i8)*
  Object Ptr: @fp = common dso_local local_unnamed_addr global void (%struct.data*, i8)* null, align 8, !dbg !30
 [33maddGlobalTaintSource(): Set the glob var as taint source: [0m@d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17
-AliasObject::setAsTaintSrc(): set as taint src, obj: 0x23a2160
-FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x23a2210, Host: 0x0
-FieldTaint::addTf(): +++TF: TAG(0x23a5050):struct.data|-1(OBJ:0x23a2160,G:1) TF(0x23a5080)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0x26db190
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x26db240, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0x26de080):struct.data|-1(OBJ:0x26db190,G:1) TF(0x26de0b0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x23a2160
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23a2160 | 0
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a5320, Host: 0x23a2160
-FieldTaint::addTf(): +++TF: TAG(0x23a51d0):struct.data|0(OBJ:0x23a2160,G:1) TF(0x23a5200)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x26db190
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26db190 | 0
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26de320, Host: 0x26db190
+FieldTaint::addTf(): +++TF: TAG(0x26de200):struct.data|0(OBJ:0x26db190,G:1) TF(0x26de230)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23a2160 | 1
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 1 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 1, FieldTaint: 0x23a5460, Host: 0x23a2160
-FieldTaint::addTf(): +++TF: TAG(0x23a53c0):struct.data|1(OBJ:0x23a2160,G:1) TF(0x23a53f0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26db190 | 1
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 1 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 1, FieldTaint: 0x26de490, Host: 0x26db190
+FieldTaint::addTf(): +++TF: TAG(0x26de3f0):struct.data|1(OBJ:0x26db190,G:1) TF(0x26de420)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
 [33maddGlobalTaintSource(): Set the alias obj as taint source:
 [0mObject Type: %struct.data = type { i32, [4 x i8] }
  Object Ptr: @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17
 getTargetFunctions: Functions to analyze:
-FUNC: entry0 PTR: 0x236e498 TYPE: MY_IOCTL USER_ARGS: 1
-FUNC: entry1 PTR: 0x236e078 TYPE: NULL_ARG USER_ARGS:
-FUNC: entry2 PTR: 0x236d178 TYPE: NULL_ARG USER_ARGS:
-[TIMING] Analysis starts at: Sat Nov 22 02:44:18 2025
+FUNC: entry0 PTR: 0x26a7498 TYPE: MY_IOCTL USER_ARGS: 1
+FUNC: entry1 PTR: 0x26a7078 TYPE: NULL_ARG USER_ARGS:
+FUNC: entry2 PTR: 0x26a6178 TYPE: NULL_ARG USER_ARGS:
+[TIMING] Analysis starts at: Sat Nov 22 05:18:07 2025
 
 =========================Preliminary Analysis Phase=========================
 =========================Main Analysis Phase=========================
 [32m[GREEN] Hello from TaintAnalysisVisitor![0m
 TaintUtils::updateTaintInfo() for: i8 %1
 No existing taint info, insert all 1
-+++TF: TAG(0x23a6b40):i8|0(OBJ:0x0,G:0) TF(0x23a6b70)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0) TF(0x26dfb60)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
 CTX: entry0 ->
-[TIMING] Start func(1) entry0: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry0: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry0[0m
 GlobalVisitor::processCalledFunction: prepare context for: test00 (w/ definition)
@@ -73,7 +73,7 @@ AliasAnalysisVisitor::setupCallContext(): arg 1 has points to information
 PathAnalysisVisitor::visitCallInst():   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51, callee: test00
 Analyzing new function: test00 Call depth: 3
 CTX: entry0 -> test00 -> 
-[TIMING] Start func(3) test00: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test00: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test00[0m
 AliasAnalysisVisitor::visitCastInst:   %3 = bitcast %struct.data* %0 to i8*, !dbg !49
@@ -86,47 +86,47 @@ InstructionUtils::inferPointeeTy(): candidate types: i8 |
 InstructionUtils::inferPointeeTy(): res type: i8
 #newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
 #matchedPtos: 1 #unmatchedPtos: 0
-++ PTO: %struct.data = type { i32, [4 x i8] } | 0 ,is_taint_src: 1, Obj ID: 0x23a2160, Inst/Val: @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17, loadTag: 
+++ PTO: %struct.data = type { i32, [4 x i8] } | 0 ,is_taint_src: 1, Obj ID: 0x26db190, Inst/Val: @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17, loadTag: 
 updatePointsToObjects: #After update: 1
 AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
 visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
-AliasObject::getNestedObj(): 0x23a2160 | 0 : i32
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a5320, Host: 0x23a2160
-FieldTaint::addTf(): +++TF: TAG(0x23a6b40):i8|0(OBJ:0x0,G:0) TF(0x23a84a0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry0 -> test00 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+AliasObject::getNestedObj(): 0x26db190 | 0 : i32
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26de320, Host: 0x26db190
+FieldTaint::addTf(): +++TF: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0) TF(0x26e1490)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry0 -> test00 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 2/2/2/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 9.491500e-05s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 6.968700e-05s
 GlobalVisitor::processCalledFunction: prepare context for: test01 (w/ definition)
 AliasAnalysisVisitor::visitCallInst():   call void @test01(i8* nonnull %3, i8 signext %1), !dbg !54
 AliasAnalysisVisitor::setupCallContext(): arg 1 has points to information
 PathAnalysisVisitor::visitCallInst():   call void @test01(i8* nonnull %3, i8 signext %1), !dbg !54, callee: test01
 Analyzing new function: test01 Call depth: 5
 CTX: entry0 -> test00 -> test01 -> 
-[TIMING] Start func(5) test01: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(5) test01: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test01[0m
 TaintUtils::updateTaintInfo() for:   %3 = icmp eq i8 %1, 0, !dbg !51
 No existing taint info, insert all 1
-+++TF: TAG(0x23a6b40):i8|0(OBJ:0x0,G:0) TF(0x23aaaf0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   %3 = icmp eq i8 %1, 0, !dbg !51 (entry0 -> test00 -> test01 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0) TF(0x26e3ae0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   %3 = icmp eq i8 %1, 0, !dbg !51 (entry0 -> test00 -> test01 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
 PathAnalysisVisitor::visitBranchInst(): Processing BR:   br i1 %3, label %5, label %4, !dbg !53, pred: 32, sc: 0, uc: 0
 [32mStarting to analyze BB::at:test01[0m
 AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55
 visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55
-AliasObject::getNestedObj(): 0x23a2160 | 0 : i32
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a5320, Host: 0x23a2160
-FieldTaint::addTf(): +++TF: TAG(0x23a6b40):i8|0(OBJ:0x0,G:0) TF(0x2538ed0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry0 -> test00 -> test01 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
+AliasObject::getNestedObj(): 0x26db190 | 0 : i32
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26de320, Host: 0x26db190
+FieldTaint::addTf(): +++TF: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0) TF(0x255de70)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry0 -> test00 -> test01 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 3/3/3/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 9.062100e-05s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 8.300200e-05s
 [32mStarting to analyze BB::at:test01[0m
 AliasAnalysisVisitor::visitGetElementPtrInst():   %6 = getelementptr inbounds i8, i8* %0, i64 1000, !dbg !59
 AliasAnalysisVisitor::processGEPFirstDimension():: basePointerTy: i8*
 AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 1000
 AliasAnalysisVisitor::processGEPFirstDimension(): basePointeeTy size: 8, is_primitive: 1
 AliasAnalysisVisitor::processGEPFirstDimension(): invoke bit2Field()...
-AliasAnalysisVisitor::bit2Field(): host obj: %struct.data = type { i32, [4 x i8] } | 0 obj ID: 0x23a2160
+AliasAnalysisVisitor::bit2Field(): host obj: %struct.data = type { i32, [4 x i8] } | 0 obj ID: 0x26db190
 AliasAnalysisVisitor::bit2Field(): dstOffset(org_dstOffset): 0(0) bits(org_bits): 8000(8000) resOffset: 8000
 AliasAnalysisVisitor::bit2Field(): resOffset (in bits) out-of-bound, possibly the container_of() case, trying to figure out the host object...
 AliasAnalysisVisitor::bit2Field(): the recorded parent object is not enough, we need to infer the unknown container object...
@@ -137,14 +137,14 @@ inferContainerTy(): cannot find the ty1.
 inferContainerTy(): all GEPs analyzed, #cand containers: 0
 AliasAnalysisVisitor::bit2Field(): failed to infer the container type...
 AliasAnalysisVisitor::processMultiDimensionGEP(): !I || !srcPointsTo || srcPointsTo->empty()
-[TIMING] AliasAnalysisVisitor::visitGetElementPtrInst(): 1.231170e-04s
+[TIMING] AliasAnalysisVisitor::visitGetElementPtrInst(): 1.038330e-04s
 AliasAnalysisVisitor::visitStoreInst():   store i8 0, i8* %6, align 1, !dbg !60, !tbaa !55
 visitStoreInst(): src does not point to anything: i8 0; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 0, i8* %6, align 1, !dbg !60, !tbaa !55
 [32mStarting to analyze BB::at:test01[0m
-[TIMING] End func(5) test01 in: 1.827757e-02s
+[TIMING] End func(5) test01 in: 1.705848e-02s
 CTX: entry0 -> test00 -> 
-[TIMING] End func(3) test00 in: 1.863373e-02s
+[TIMING] End func(3) test00 in: 1.733972e-02s
 CTX: entry0 -> 
 AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !52, !tbaa !53
 AliasAnalysisVisitor::handleInlinePointerOp(): Dealing w/ the embedded GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
@@ -155,8 +155,8 @@ AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 0
 About to process index: 1
 Index value: 1
 AliasAnalysisVisitor::makePointsToCopy(): #elements in *srcPointsTo: 1 
-AliasAnalysisVisitor::makePointsToCopy(): basePointerType: %struct.data* cur pto: %struct.data = type { i32, [4 x i8] } | 0, obj: 0x23a2160 dst fid: 1
-AliasAnalysisVisitor::makePointsToCopy(): ++ ret pto: %struct.data = type { i32, [4 x i8] } | 1, obj: 0x23a2160
+AliasAnalysisVisitor::makePointsToCopy(): basePointerType: %struct.data* cur pto: %struct.data = type { i32, [4 x i8] } | 0, obj: 0x26db190 dst fid: 1
+AliasAnalysisVisitor::makePointsToCopy(): ++ ret pto: %struct.data = type { i32, [4 x i8] } | 1, obj: 0x26db190
 AliasAnalysisVisitor::makePointsToCopy(): #ret: 1
 About to process index: 2
 Index value: 0
@@ -166,47 +166,47 @@ AliasAnalysisVisitor::makePointsToCopy_emb(): elements in *srcPointsTo: 1
 AliasAnalysisVisitor::makePointsToCopy_emb(): host_type: %struct.data = type { i32, [4 x i8] } | 1
 AliasAnalysisVisitor::makePointsToCopy_emb(): ety: [4 x i8] | 0
 AliasAnalysisVisitor::makePointsToCopy_emb(): trying to get/create an object for the embedded struct/array..
-AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0x23a2160
+AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0x26db190
 AliasObject::createEmbObj(): ety: [4 x i8] expectedPointeeTy: [4 x i8]
 AliasObject::createEmbObj(): try to create a new embed object because there is no emb obj in cache...
 createOutsideObj():   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1  |   : [4 x i8]*
 createOutsideObj(): Try to create new outside object.
-createOutsideObj(): New obj created: 0x23daf20
-AliasObject::createEmbObj(): the embedded obj created: 0x23a2160 | 1 --> 0x23daf20
+createOutsideObj(): New obj created: 0x26e0220
+AliasObject::createEmbObj(): the embedded obj created: 0x26db190 | 1 --> 0x26e0220
 AliasObject::createEmbObj(): set the emb obj as a taint source since its host obj is so, is_taint_src: 1
 !!! AliasObject::createEmbObj(): cannot find the InstLoc in host inherent taint flag!
-AliasObject::setAsTaintSrc(): set as taint src, obj: 0x23daf20
-FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x23dafd0, Host: 0x0
-FieldTaint::addTf(): +++TF: TAG(0x2584010):[i8]*4|-1(OBJ:0x23daf20,G:1) TF(0x25c1670)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0x26e0220
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x26e02d0, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0x27d5410):[i8]*4|-1(OBJ:0x26e0220,G:1) TF(0x29021d0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x23daf20
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23daf20 | 0
-AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x23daf20
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x259f730, Host: 0x23daf20
-FieldTaint::addTf(): +++TF: TAG(0x23a8310):[i8]*4|0(OBJ:0x23daf20,G:1) TF(0x23a8b40)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x26e0220
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26e0220 | 0
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x26e0220
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x29eac20, Host: 0x26e0220
+FieldTaint::addTf(): +++TF: TAG(0x26e1530):[i8]*4|0(OBJ:0x26e0220,G:1) TF(0x26e1b30)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23daf20 | 1
-AliasObject::addFieldTaintFlag(): [4 x i8] | 1 obj: 0x23daf20
-FieldTaint::addTf(): add TF for field 1, FieldTaint: 0x23c9bd0, Host: 0x23daf20
-FieldTaint::addTf(): +++TF: TAG(0x23a8400):[i8]*4|1(OBJ:0x23daf20,G:1) TF(0x23a88d0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26e0220 | 1
+AliasObject::addFieldTaintFlag(): [4 x i8] | 1 obj: 0x26e0220
+FieldTaint::addTf(): add TF for field 1, FieldTaint: 0x2827eb0, Host: 0x26e0220
+FieldTaint::addTf(): +++TF: TAG(0x26e0d50):[i8]*4|1(OBJ:0x26e0220,G:1) TF(0x26e18c0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23daf20 | 2
-AliasObject::addFieldTaintFlag(): [4 x i8] | 2 obj: 0x23daf20
-FieldTaint::addTf(): add TF for field 2, FieldTaint: 0x255e320, Host: 0x23daf20
-FieldTaint::addTf(): +++TF: TAG(0x23a8bb0):[i8]*4|2(OBJ:0x23daf20,G:1) TF(0x247c990)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26e0220 | 2
+AliasObject::addFieldTaintFlag(): [4 x i8] | 2 obj: 0x26e0220
+FieldTaint::addTf(): add TF for field 2, FieldTaint: 0x2849fc0, Host: 0x26e0220
+FieldTaint::addTf(): +++TF: TAG(0x26e0ce0):[i8]*4|2(OBJ:0x26e0220,G:1) TF(0x26e0040)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-AliasObject::setAsTaintSrc(): Adding taint to: 0x23daf20 | 3
-AliasObject::addFieldTaintFlag(): [4 x i8] | 3 obj: 0x23daf20
-FieldTaint::addTf(): add TF for field 3, FieldTaint: 0x23d0770, Host: 0x23daf20
-FieldTaint::addTf(): +++TF: TAG(0x247ca00):[i8]*4|3(OBJ:0x23daf20,G:1) TF(0x23a7c50)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x26e0220 | 3
+AliasObject::addFieldTaintFlag(): [4 x i8] | 3 obj: 0x26e0220
+FieldTaint::addTf(): add TF for field 3, FieldTaint: 0x2852d40, Host: 0x26e0220
+FieldTaint::addTf(): +++TF: TAG(0x26e00b0):[i8]*4|3(OBJ:0x26e0220,G:1) TF(0x26e00e0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
-FieldTaint::getTf(): fetch taint for field: 1, FieldTaint: 0x23a5460, Host: 0x23a2160
+FieldTaint::getTf(): fetch taint for field: 1, FieldTaint: 0x26de490, Host: 0x26db190
 FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
 AliasObject::createEmbObj(): try to taint the emb obj (all fields), #TaintFlag: 1
 updatePointsToObjects for :   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
 #newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: [4 x i8]
 #matchedPtos: 1 #unmatchedPtos: 0
-++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x23daf20, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x26e0220, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
 updatePointsToObjects: #After update: 1
 AliasAnalysisVisitor::processMultiDimensionGEP(): updating the point-to for current GEP...
 updatePointsToObjects for : i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
@@ -215,36 +215,36 @@ InstructionUtils::inferPointeeTy(): candidate types: i8 |
 InstructionUtils::inferPointeeTy(): res type: i8
 #newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
 #matchedPtos: 1 #unmatchedPtos: 0
-++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x23daf20, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x26e0220, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
 updatePointsToObjects: #After update: 1
 visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !52, !tbaa !53
-AliasObject::getNestedObj(): 0x23daf20 | 0 : i8
-AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x23daf20
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x259f730, Host: 0x23daf20
-FieldTaint::addTf(): +++TF: TAG(0x23a6b40):i8|0(OBJ:0x0,G:0) TF(0x23a9fc0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !52, !tbaa !53 (entry0 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+AliasObject::getNestedObj(): 0x26e0220 | 0 : i8
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x26e0220
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x29eac20, Host: 0x26e0220
+FieldTaint::addTf(): +++TF: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0) TF(0x26e2fb0)  FROM:   call void @test00(%struct.data* nonnull @d, i8 signext %1), !dbg !51 (entry0 -> ) TO:   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !52, !tbaa !53 (entry0 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 2/2/2/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 6.180600e-05s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 6.158300e-05s
 AliasAnalysisVisitor::visitStoreInst():   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57
 inferSrcDstMap(): #srcPointsTo: 1 #dstPointsTo: 1
-updateFieldPointsTo() for: void (%struct.data*, i8)* | 0 Host Obj ID: 0x23a26e0
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
-updateFieldPointsTo_do(): add and activate point-to: host: 0x23a26e0, 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x23a0520
-updateFieldPointsTo_do(): After updates: Field Pto: 0x23a26e0 | 0 : #Total: 1 #Active: 1 #Strong: 1
-[TIMING] AliasAnalysisVisitor::visitStoreInst(): 6.441500e-05s
+updateFieldPointsTo() for: void (%struct.data*, i8)* | 0 Host Obj ID: 0x26db710
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
+updateFieldPointsTo_do(): add and activate point-to: host: 0x26db710, 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x26d9550
+updateFieldPointsTo_do(): After updates: Field Pto: 0x26db710 | 0 : #Total: 1 #Active: 1 #Strong: 1
+[TIMING] AliasAnalysisVisitor::visitStoreInst(): 6.212900e-05s
 TaintAnalysisVisitor::visitStoreInst():   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
-AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x23a26e0
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a4e70, Host: 0x23a26e0
-FieldTaint::addTf(): +++TF: NULL TF(0x23a9570)  FROM:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57 (entry0 -> ) TO:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57 (entry0 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
+AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x26db710
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26ddea0, Host: 0x26db710
+FieldTaint::addTf(): +++TF: NULL TF(0x26dfea0)  FROM:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57 (entry0 -> ) TO:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57 (entry0 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 2/1/2/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 5.261700e-05s
-[TIMING] End func(1) entry0 in: 1.944105e-02s
-[TIMING] Anlysis of entry0 done in : 1.960182e-02s
-[TIMING] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 5.247500e-05s
+[TIMING] End func(1) entry0 in: 1.810590e-02s
+[TIMING] Anlysis of entry0 done in : 1.822408e-02s
+[TIMING] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
 CTX: entry1 ->
-[TIMING] Start func(1) entry1: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry1: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry1[0m
 GlobalVisitor::processCalledFunction: prepare context for: bar (w/ definition)
@@ -252,7 +252,7 @@ AliasAnalysisVisitor::visitCallInst():   %1 = call i32 @bar(i8* bitcast ([128 x 
 PathAnalysisVisitor::visitCallInst():   %1 = call i32 @bar(i8* bitcast ([128 x i32]* @numbers to i8*)), !dbg !47, callee: bar
 Analyzing new function: bar Call depth: 3
 CTX: entry1 -> bar -> 
-[TIMING] Start func(3) bar: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) bar: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:bar[0m
 AliasAnalysisVisitor::visitGetElementPtrInst():   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !50
@@ -262,25 +262,25 @@ createOutsideObj(): It's not a pointer to the composite type! Cannot create an o
 AliasAnalysisVisitor::createOutsideObj(): failed to create the dummy obj!
 AliasAnalysisVisitor::processGEPFirstDimension(): No points-to for: i8* %0, return
 AliasAnalysisVisitor::processMultiDimensionGEP(): !I || !srcPointsTo || srcPointsTo->empty()
-[TIMING] AliasAnalysisVisitor::visitGetElementPtrInst(): 2.804600e-05s
+[TIMING] AliasAnalysisVisitor::visitGetElementPtrInst(): 2.843200e-05s
 AliasAnalysisVisitor::visitLoadInst():   %3 = load i8, i8* %2, align 1, !dbg !51, !tbaa !52
 createOutsideObj():   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !50  |   : i8*
 validTyForOutsideObj(): it's not a composite type, cannot create the outside obj!
 createOutsideObj(): It's not a pointer to the composite type! Cannot create an outside object!
 AliasAnalysisVisitor::createOutsideObj(): failed to create the dummy obj!
 AliasAnalysisVisitor::visitLoadInst(): srcPointer does not point to any object.
-[TIMING] TaintAnalysisVisitor::visitLoadInst(): 1.467000e-06s
+[TIMING] TaintAnalysisVisitor::visitLoadInst(): 1.663000e-06s
 AliasAnalysisVisitor::visitStoreInst():   store i8 %4, i8* %2, align 1, !dbg !51, !tbaa !52
 visitStoreInst(): src does not point to anything:   %4 = add i8 %3, -16, !dbg !51; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %4, i8* %2, align 1, !dbg !51, !tbaa !52
-[TIMING] End func(3) bar in: 8.771400e-05s
+[TIMING] End func(3) bar in: 8.928500e-05s
 CTX: entry1 -> 
-[TIMING] End func(1) entry1 in: 1.470430e-04s
-[TIMING] Anlysis of entry1 done in : 1.793800e-04s
-[TIMING] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] End func(1) entry1 in: 1.497890e-04s
+[TIMING] Anlysis of entry1 done in : 1.811280e-04s
+[TIMING] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
 CTX: entry2 ->
-[TIMING] Start func(1) entry2: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry2: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry2[0m
 GlobalVisitor::processCalledFunction: prepare context for: test20 (w/ definition)
@@ -288,35 +288,35 @@ AliasAnalysisVisitor::visitCallInst():   call void @test20(), !dbg !47
 PathAnalysisVisitor::visitCallInst():   call void @test20(), !dbg !47, callee: test20
 Analyzing new function: test20 Call depth: 3
 CTX: entry2 -> test20 -> 
-[TIMING] Start func(3) test20: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test20: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test20[0m
 AliasAnalysisVisitor::visitStoreInst():   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
 inferSrcDstMap(): #srcPointsTo: 1 #dstPointsTo: 1
-updateFieldPointsTo() for: void (%struct.data*, i8)* | 0 Host Obj ID: 0x23a26e0
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
-AliasObject::resetPtos(): Reset field pto for: 0x23a26e0 | 0, switch entry to:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
-AliasObject::resetPtos(): de-activate point-to: 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x23a0520
-updateFieldPointsTo_do(): add and activate point-to: host: 0x23a26e0, 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x23a0520
-updateFieldPointsTo_do(): After updates: Field Pto: 0x23a26e0 | 0 : #Total: 2 #Active: 2 #Strong: 2
-[TIMING] AliasAnalysisVisitor::visitStoreInst(): 8.801200e-05s
+updateFieldPointsTo() for: void (%struct.data*, i8)* | 0 Host Obj ID: 0x26db710
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
+AliasObject::resetPtos(): Reset field pto for: 0x26db710 | 0, switch entry to:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
+AliasObject::resetPtos(): de-activate point-to: 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x26d9550
+updateFieldPointsTo_do(): add and activate point-to: host: 0x26db710, 0 -> void (%struct.data*, i8)* | 0 Tgt Obj ID: 0x26d9550
+updateFieldPointsTo_do(): After updates: Field Pto: 0x26db710 | 0 : #Total: 2 #Active: 2 #Strong: 2
+[TIMING] AliasAnalysisVisitor::visitStoreInst(): 8.175400e-05s
 TaintAnalysisVisitor::visitStoreInst():   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
-AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x23a26e0
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a4e70, Host: 0x23a26e0
-FieldTaint::resetTfs(): reset field (0, FieldTaint: 0x23a4e70, Host: 0x23a26e0) taint since we have switched to a new entry:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
+AliasObject::addFieldTaintFlag(): void (%struct.data*, i8)* | 0 obj: 0x26db710
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26ddea0, Host: 0x26db710
+FieldTaint::resetTfs(): reset field (0, FieldTaint: 0x26ddea0, Host: 0x26db710) taint since we have switched to a new entry:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
 FieldTaint::getTf(): final stats: total/act_tan/ret: 2/1/0
-FieldTaint::addTf(): +++TF: NULL TF(0x2657570)  FROM:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 (entry2 -> test20 -> ) TO:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 (entry2 -> test20 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+FieldTaint::addTf(): +++TF: NULL TF(0x2985140)  FROM:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 (entry2 -> test20 -> ) TO:   store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 (entry2 -> test20 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 3/1/2/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 8.702300e-05s
-[TIMING] End func(3) test20 in: 1.960660e-04s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 8.364200e-05s
+[TIMING] End func(3) test20 in: 1.860890e-04s
 CTX: entry2 -> 
 GlobalVisitor::processCalledFunction: prepare context for: test21 (w/ definition)
 AliasAnalysisVisitor::visitCallInst():   call void @test21(), !dbg !48
 PathAnalysisVisitor::visitCallInst():   call void @test21(), !dbg !48, callee: test21
 Analyzing new function: test21 Call depth: 3
 CTX: entry2 -> test21 -> 
-[TIMING] Start func(3) test21: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test21: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test21[0m
 AliasAnalysisVisitor::visitLoadInst():   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
@@ -326,25 +326,25 @@ InstructionUtils::inferPointeeTy(): res type: void (%struct.data*, i8)
 
 *********FieldAccess(FETCH)**********
 Current Inst:   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
-void (%struct.data*, i8)* | 0 OBJ: 0x23a26e0
+void (%struct.data*, i8)* | 0 OBJ: 0x26db710
 Object Ptr: @fp = common dso_local local_unnamed_addr global void (%struct.data*, i8)* null, align 8, !dbg !30
 *******************
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
 AliasObject::getLivePtos(): There are currently 1 live ptos in the return set, before path coverage test.
-AliasObject::getLivePtos(): Field Pto: 0x23a26e0 | 0 : #Total: 2 #Active: 2 #Strong: 2
+AliasObject::getLivePtos(): Field Pto: 0x26db710 | 0 : #Total: 2 #Active: 2 #Strong: 2
 AliasObject::getLivePtos(): #final_ret: 1
--> void (%struct.data*, i8)* | 0, obj: 0x23a0520, is_taint_src: 0, Val: test00
+-> void (%struct.data*, i8)* | 0, obj: 0x26d9550, is_taint_src: 0, Val: test00
 AliasAnalysisVisitor::visitLoadInst(): #targetObjects: 1 #finalObjects: 1
 updatePointsToObjects for :   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
 #newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: void (%struct.data*, i8)
 #matchedPtos: 0 #unmatchedPtos: 1
-++ PTO: void (%struct.data*, i8)* | 0 ,is_taint_src: 0, Obj ID: 0x23a0520, Inst/Val: FUNC test00, loadTag:   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 [0] -> 
+++ PTO: void (%struct.data*, i8)* | 0 ,is_taint_src: 0, Obj ID: 0x26d9550, Inst/Val: FUNC test00, loadTag:   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48 [0] -> 
 updatePointsToObjects: #After update: 1
-[TIMING] AliasAnalysisVisitor::visitLoadInst(): 1.159730e-04s
-AliasObject::getNestedObj(): 0x23a26e0 | 0 : void (%struct.data*, i8)*
-FieldTaint::getTf(): fetch taint for field: 0, FieldTaint: 0x23a4e70, Host: 0x23a26e0
+[TIMING] AliasAnalysisVisitor::visitLoadInst(): 1.154210e-04s
+AliasObject::getNestedObj(): 0x26db710 | 0 : void (%struct.data*, i8)*
+FieldTaint::getTf(): fetch taint for field: 0, FieldTaint: 0x26ddea0, Host: 0x26db710
 FieldTaint::getTf(): final stats: total/act_tan/ret: 3/1/0
-[TIMING] TaintAnalysisVisitor::visitLoadInst(): 2.095500e-05s
+[TIMING] TaintAnalysisVisitor::visitLoadInst(): 2.066300e-05s
 Visiting Indirect call instruction:   call void %1(%struct.data* nonnull @d, i8 signext 97) #6, !dbg !47
 PointsToUtils::getTargetFunctions(): retrieve target functions for pointer:   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
 Found Target Function: test00
@@ -353,10 +353,10 @@ GlobalVisitor::processCalledFunction: prepare context for: test00 (w/ definition
 AliasAnalysisVisitor::visitCallInst():   call void %1(%struct.data* nonnull @d, i8 signext 97) #6, !dbg !47
 AliasAnalysisVisitor::setupCallContext(): arg 1 has points to information
 PathAnalysisVisitor::visitCallInst():   call void %1(%struct.data* nonnull @d, i8 signext 97) #6, !dbg !47, callee: test00
-PathAnalysisVisitor::visitCallInst(): actual arg 1 is a constant int: 97, so add the constraint (= |37204856| #x0000000000000061) to the formal arg: i8 %1
+PathAnalysisVisitor::visitCallInst(): actual arg 1 is a constant int: 97, so add the constraint (= |40584056| #x0000000000000061) to the formal arg: i8 %1
 Analyzing new function: test00 Call depth: 5
 CTX: entry2 -> test21 -> test00 -> 
-[TIMING] Start func(5) test00: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(5) test00: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test00[0m
 AliasAnalysisVisitor::visitCastInst:   %3 = bitcast %struct.data* %0 to i8*, !dbg !49
@@ -368,27 +368,27 @@ InstructionUtils::inferPointeeTy() for:   %3 = bitcast %struct.data* %0 to i8*, 
 InstructionUtils::inferPointeeTy(): res type: i8
 #newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
 #matchedPtos: 1 #unmatchedPtos: 0
-++ PTO: %struct.data = type { i32, [4 x i8] } | 0 ,is_taint_src: 1, Obj ID: 0x23a2160, Inst/Val: @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17, loadTag: 
+++ PTO: %struct.data = type { i32, [4 x i8] } | 0 ,is_taint_src: 1, Obj ID: 0x26db190, Inst/Val: @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !17, loadTag: 
 updatePointsToObjects: #After update: 1
 AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
 visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
-AliasObject::getNestedObj(): 0x23a2160 | 0 : i32
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a5320, Host: 0x23a2160
-FieldTaint::resetTfs(): reset field (0, FieldTaint: 0x23a5320, Host: 0x23a2160) taint since we have switched to a new entry:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
+AliasObject::getNestedObj(): 0x26db190 | 0 : i32
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26de320, Host: 0x26db190
+FieldTaint::resetTfs(): reset field (0, FieldTaint: 0x26de320, Host: 0x26db190) taint since we have switched to a new entry:   call void @test20(), !dbg !47/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: exp.c @ 48
 FieldTaint::getTf(): final stats: total/act_tan/ret: 3/3/2
-FieldTaint::addTf(): +++TF: NULL TF(0x24ee3b0)  FROM:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry2 -> test21 -> test00 -> ) TO:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry2 -> test21 -> test00 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+FieldTaint::addTf(): +++TF: NULL TF(0x2a01910)  FROM:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry2 -> test21 -> test00 -> ) TO:   store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51 (entry2 -> test21 -> test00 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 4/3/2/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 9.464900e-05s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 9.302000e-05s
 GlobalVisitor::processCalledFunction: prepare context for: test01 (w/ definition)
 AliasAnalysisVisitor::visitCallInst():   call void @test01(i8* nonnull %3, i8 signext %1), !dbg !54
 AliasAnalysisVisitor::setupCallContext(): arg 1 has points to information
 PathAnalysisVisitor::visitCallInst():   call void @test01(i8* nonnull %3, i8 signext %1), !dbg !54, callee: test01
-PathAnalysisVisitor::visitCallInst(): propagate constraint for arg 1: i8 %1 -> i8 %1, constraint: (= |37204856| #x0000000000000061)
+PathAnalysisVisitor::visitCallInst(): propagate constraint for arg 1: i8 %1 -> i8 %1, constraint: (= |40584056| #x0000000000000061)
 Analyzing new function: test01 Call depth: 7
 CTX: entry2 -> test21 -> test00 -> test01 -> 
-[TIMING] Start func(7) test01: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(7) test01: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test01[0m
 PathAnalysisVisitor::visitBranchInst(): Processing BR:   br i1 %3, label %5, label %4, !dbg !53, pred: 32, sc: 0, uc: 0
@@ -396,108 +396,125 @@ PathAnalysisVisitor::visitBranchInst(): Processing BR:   br i1 %3, label %5, lab
 AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55
 visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
 TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55
-AliasObject::getNestedObj(): 0x23a2160 | 0 : i32
-AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x23a2160
-FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x23a5320, Host: 0x23a2160
-FieldTaint::addTf(): +++TF: NULL TF(0x244ad30)  FROM:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry2 -> test21 -> test00 -> test01 -> ) TO:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry2 -> test21 -> test00 -> test01 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+AliasObject::getNestedObj(): 0x26db190 | 0 : i32
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0x26db190
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x26de320, Host: 0x26db190
+FieldTaint::addTf(): +++TF: NULL TF(0x286d210)  FROM:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry2 -> test21 -> test00 -> test01 -> ) TO:   store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55 (entry2 -> test21 -> test00 -> test01 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
 FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 5/3/3/1/0
-[TIMING] TaintAnalysisVisitor::visitStoreInst(): 6.815600e-05s
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 6.764700e-05s
 GlobalVisitor::analyze(): skip the BB since it's infeasible: %5
 [32mStarting to analyze BB::at:test01[0m
-[TIMING] End func(7) test01 in: 1.538648e-02s
+[TIMING] End func(7) test01 in: 1.538145e-02s
 CTX: entry2 -> test21 -> test00 -> 
-[TIMING] End func(5) test00 in: 4.604936e-02s
+[TIMING] End func(5) test00 in: 4.602720e-02s
 CTX: entry2 -> test21 -> 
-[TIMING] End func(3) test21 in: 5.394745e-02s
+[TIMING] End func(3) test21 in: 5.396916e-02s
 CTX: entry2 -> 
-[TIMING] End func(1) entry2 in: 5.423215e-02s
-[TIMING] Anlysis of entry2 done in : 5.425173e-02s
-[TIMING] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] End func(1) entry2 in: 5.424473e-02s
+[TIMING] Anlysis of entry2 done in : 5.426449e-02s
+[TIMING] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
-[TIMING] All main anlysis done in : 7.412896e-02s
+[TIMING] All main anlysis done in : 7.273102e-02s
 =========================Bug Detection Phase=========================
-[TIMING] Bug Detection Phase Starts : Sat Nov 22 02:44:18 2025
+[TIMING] Bug Detection Phase Starts : Sat Nov 22 05:18:07 2025
 
 CTX: entry0 ->
-[TIMING] Start func(1) entry0: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry0: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry0[0m
 GlobalVisitor::processCalledFunction: prepare context for: test00 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test00 Call depth: 3
 CTX: entry0 -> test00 -> 
-[TIMING] Start func(3) test00: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test00: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test00[0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
 [DEBUG] ptr =   %3 = bitcast %struct.data* %0 to i8*, !dbg !49
 [31m[TPD] store to global: [0m
+getAllUserTaintChains(): enum user taint chains for TF: 0x26e0b60 TAG: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0)
+getAllUserTaintChains(): this is already a user taint tag, return the TF trace directly!
+[31m[TPD] has taint value: [0m
+[103;30m[VUL] Store taint value in global![0m
 GlobalVisitor::processCalledFunction: prepare context for: test01 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test01 Call depth: 5
 CTX: entry0 -> test00 -> test01 -> 
-[TIMING] Start func(5) test01: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(5) test01: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test01[0m
 [32mStarting to analyze BB::at:test01[0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 %1, i8* %0, align 1, !dbg !54, !tbaa !55
 [DEBUG] ptr = i8* %0
 [31m[TPD] store to global: [0m
+getAllUserTaintChains(): enum user taint chains for TF: 0x26e2bf0 TAG: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0)
+getAllUserTaintChains(): this is already a user taint tag, return the TF trace directly!
+[31m[TPD] has taint value: [0m
+[103;30m[VUL] Store taint value in global![0m
 [32mStarting to analyze BB::at:test01[0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 0, i8* %6, align 1, !dbg !60, !tbaa !55
 [DEBUG] ptr =   %6 = getelementptr inbounds i8, i8* %0, i64 1000, !dbg !59
 [31m[TPD] store to global: [0m
 [32mStarting to analyze BB::at:test01[0m
-[TIMING] End func(5) test01 in: 4.825700e-05s
+[TIMING] End func(5) test01 in: 6.396500e-05s
 CTX: entry0 -> test00 -> 
-[TIMING] End func(3) test00 in: 1.049560e-04s
+[TIMING] End func(3) test00 in: 1.445700e-04s
 CTX: entry0 -> 
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !52, !tbaa !53
 [DEBUG] ptr = i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
 [31m[TPD] store to global: [0m
+getAllUserTaintChains(): enum user taint chains for TF: 0x26dfb60 TAG: TAG(0x26dfb30):i8|0(OBJ:0x0,G:0)
+getAllUserTaintChains(): this is already a user taint tag, return the TF trace directly!
+[31m[TPD] has taint value: [0m
+[103;30m[VUL] Store taint value in global![0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !56, !tbaa !57
 [DEBUG] ptr = @fp = common dso_local local_unnamed_addr global void (%struct.data*, i8)* null, align 8, !dbg !30
 [31m[TPD] store to global: [0m
-[TIMING] End func(1) entry0 in: 1.658890e-04s
-[TIMING][Bug-Detection] Anlysis of entry0 done in : 2.113080e-04s
-[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] End func(1) entry0 in: 2.232340e-04s
+[TIMING][Bug-Detection] Anlysis of entry0 done in : 2.684240e-04s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
 CTX: entry1 ->
-[TIMING] Start func(1) entry1: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry1: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry1[0m
 GlobalVisitor::processCalledFunction: prepare context for: bar (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: bar Call depth: 3
 CTX: entry1 -> bar -> 
-[TIMING] Start func(3) bar: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) bar: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:bar[0m
 TaintedPointerDereferenceChecker says: Visiting Load Instruction:   %3 = load i8, i8* %2, align 1, !dbg !51, !tbaa !52
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 %4, i8* %2, align 1, !dbg !51, !tbaa !52
 [DEBUG] ptr =   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !50
-[TIMING] End func(3) bar in: 2.844100e-05s
+[TIMING] End func(3) bar in: 3.277100e-05s
 CTX: entry1 -> 
-[TIMING] End func(1) entry1 in: 6.460900e-05s
-[TIMING][Bug-Detection] Anlysis of entry1 done in : 8.276600e-05s
-[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] End func(1) entry1 in: 7.020300e-05s
+[TIMING][Bug-Detection] Anlysis of entry1 done in : 8.853200e-05s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
 CTX: entry2 ->
-[TIMING] Start func(1) entry2: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(1) entry2: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:entry2[0m
 GlobalVisitor::processCalledFunction: prepare context for: test20 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test20 Call depth: 3
 CTX: entry2 -> test20 -> 
-[TIMING] Start func(3) test20: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test20: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test20[0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store void (%struct.data*, i8)* @test00, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
 [DEBUG] ptr = @fp = common dso_local local_unnamed_addr global void (%struct.data*, i8)* null, align 8, !dbg !30
 [31m[TPD] store to global: [0m
-[TIMING] End func(3) test20 in: 2.427100e-05s
+[TIMING] End func(3) test20 in: 2.123000e-05s
 CTX: entry2 -> 
 GlobalVisitor::processCalledFunction: prepare context for: test21 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test21 Call depth: 3
 CTX: entry2 -> test21 -> 
-[TIMING] Start func(3) test21: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(3) test21: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test21[0m
 TaintedPointerDereferenceChecker says: Visiting Load Instruction:   %1 = load void (%struct.data*, i8)*, void (%struct.data*, i8)** @fp, align 8, !dbg !47, !tbaa !48
@@ -506,18 +523,20 @@ PointsToUtils::getTargetFunctions(): retrieve target functions for pointer:   %1
 Found Target Function: test00
 There are: 1 Target Functions.
 GlobalVisitor::processCalledFunction: prepare context for: test00 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test00 Call depth: 5
 CTX: entry2 -> test21 -> test00 -> 
-[TIMING] Start func(5) test00: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(5) test00: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test00[0m
 TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  store i8 %1, i8* %3, align 1, !dbg !50, !tbaa !51
 [DEBUG] ptr =   %3 = bitcast %struct.data* %0 to i8*, !dbg !49
 [31m[TPD] store to global: [0m
 GlobalVisitor::processCalledFunction: prepare context for: test01 (w/ definition)
+[103;30m Call Inst [0m
 Analyzing new function: test01 Call depth: 7
 CTX: entry2 -> test21 -> test00 -> test01 -> 
-[TIMING] Start func(7) test01: Sat Nov 22 02:44:18 2025
+[TIMING] Start func(7) test01: Sat Nov 22 05:18:07 2025
 
 [32mStarting to analyze BB::at:test01[0m
 [32mStarting to analyze BB::at:test01[0m
@@ -526,34 +545,34 @@ TaintedPointerDereferenceChecker says:[1;94m Visiting Store Instruction: [0m  
 [31m[TPD] store to global: [0m
 GlobalVisitor::analyze(): skip the BB since it's infeasible: %5
 [32mStarting to analyze BB::at:test01[0m
-[TIMING] End func(7) test01 in: 3.739800e-05s
+[TIMING] End func(7) test01 in: 3.712600e-05s
 CTX: entry2 -> test21 -> test00 -> 
-[TIMING] End func(5) test00 in: 9.576700e-05s
+[TIMING] End func(5) test00 in: 9.648700e-05s
 CTX: entry2 -> test21 -> 
-[TIMING] End func(3) test21 in: 1.529290e-04s
+[TIMING] End func(3) test21 in: 1.542270e-04s
 CTX: entry2 -> 
-[TIMING] End func(1) entry2 in: 2.386560e-04s
-[TIMING][Bug-Detection] Anlysis of entry2 done in : 2.562590e-04s
-[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 02:44:18 2025
+[TIMING] End func(1) entry2 in: 2.380490e-04s
+[TIMING][Bug-Detection] Anlysis of entry2 done in : 2.562070e-04s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Sat Nov 22 05:18:07 2025
 
-[TIMING] Bug Detection Phase finished in : 5.344440e-04s
+[TIMING] Bug Detection Phase finished in : 5.962420e-04s
 [+] Writing output to:benchmark/conf_exp.warn.json
 [+] Return message from file write:Success
 [+] Writing Instr output to:benchmark/conf_exp.iwarn.json
 [+] Return message from file write:Success
-All done: Sat Nov 22 02:44:18 2025
+All done: Sat Nov 22 05:18:07 2025
 
 ===-------------------------------------------------------------------------===
                             Range Analysis algorithm
 ===-------------------------------------------------------------------------===
-  Total Execution Time: 0.0002 seconds (0.0002 wall clock)
+  Total Execution Time: 0.0001 seconds (0.0001 wall clock)
 
    ---User Time---   --System Time--   --User+System--   ---Wall Time---  --- Name ---
-   0.0000 ( 69.2%)   0.0001 ( 70.8%)   0.0001 ( 70.4%)   0.0001 ( 70.9%)  Build constraint graph
-   0.0000 ( 20.5%)   0.0000 ( 20.4%)   0.0000 ( 20.4%)   0.0000 ( 20.3%)  Nuutila's algorithm for strongly connected components
-   0.0000 (  7.7%)   0.0000 (  6.2%)   0.0000 (  6.6%)   0.0000 (  6.0%)  Constraint solving
-   0.0000 (  2.6%)   0.0000 (  2.7%)   0.0000 (  2.6%)   0.0000 (  2.8%)  Compute statistics
-   0.0000 (100.0%)   0.0001 (100.0%)   0.0002 (100.0%)   0.0002 (100.0%)  Total
+   0.0000 ( 69.8%)   0.0001 ( 68.5%)   0.0001 ( 69.0%)   0.0001 ( 69.5%)  Build constraint graph
+   0.0000 ( 20.8%)   0.0000 ( 20.5%)   0.0000 ( 20.6%)   0.0000 ( 20.4%)  Nuutila's algorithm for strongly connected components
+   0.0000 (  5.7%)   0.0000 (  6.8%)   0.0000 (  6.3%)   0.0000 (  6.7%)  Constraint solving
+   0.0000 (  3.8%)   0.0000 (  4.1%)   0.0000 (  4.0%)   0.0000 (  3.3%)  Compute statistics
+   0.0001 (100.0%)   0.0001 (100.0%)   0.0001 (100.0%)   0.0001 (100.0%)  Total
 
 [32mGot Traversal order For: entry0[0m
 [32mGot Traversal order For: entry1[0m

@@ -5,6 +5,7 @@
 #include "bug_detectors/ImproperTaintedDataUseDetector.h"
 #include "bug_detectors/warnings/ImproperTaintedDataUseWarning.h"
 #include "PointsToUtils.h"
+#include "TaintUtils.h"
 
 using namespace llvm;
 
@@ -19,11 +20,85 @@ namespace DRCHECKER {
         if(this->warnedInstructions.find(&I) != this->warnedInstructions.end()) {
             return nullptr;
         }
-
+    
         if(targetFunction->isDeclaration()) {
-
             FunctionChecker *currChecker = this->targetChecker;
             // ok this is a copy_to(or from)_user function?
+// ========================================================================================================
+            bool if_global = false;
+            bool if_taint = false;
+            if(currChecker->is_memcpy_function(targetFunction)){
+                Value *dstArg = I.getArgOperand(0);
+                Value *srcArg = I.getArgOperand(1);
+                Value *sizeArg = I.getArgOperand(2);
+                Value *base = dstArg;
+                while (true) {
+                    base = base->stripPointerCasts();
+                    if (auto *gep = dyn_cast<GetElementPtrInst>(base)) {
+                        base = gep->getPointerOperand();
+                        continue;
+                    }
+                    if (auto *ce = dyn_cast<ConstantExpr>(base)) {
+                        if (ce->getOpcode() == Instruction::GetElementPtr) {
+                            base = ce->getOperand(0);  // GEP 的第一个操作数就是 base pointer（这里会是 @d）
+                            continue;
+                        }
+                    }
+                    break;
+                }
+                std::set<PointerPointsTo*> *ptos = PointsToUtils::getPointsToObjects(this->currState, this->currFuncCallSites1, base);
+                //dbgs() << "ptos -> " << ptos << "\n";
+                if(ptos){
+                    for (PointerPointsTo *pto : *ptos) {
+                        if(!pto) continue;
+                        //dbgs() << "[TAR] " << pto->targetObject << "\n";
+                        if(pto && pto->targetObject && pto->targetObject->isGlobalObject()){
+                            dbgs() << "\033[31m[TPD] store to global: " << "\033[0m\n";
+                            if_global = true;
+                        }
+                        
+                    }
+                }
+                Value *ptr = srcArg;
+                std::set<PointerPointsTo*> *srcptos = PointsToUtils::getPointsToObjects(this->currState, this->currFuncCallSites1, ptr);
+                if ((!srcptos || srcptos->empty()) && ptr) {
+                    Value *p0 = ptr->stripPointerCasts();
+                    if (p0 && p0 != ptr) {
+                        srcptos = PointsToUtils::getPointsToObjects(this->currState,
+                                                                 this->currFuncCallSites1,
+                                                                 p0);
+                    }
+                }
+                if (srcptos && !srcptos->empty()) {
+                    std::set<TaintFlag*> memTaints;  // 收集所有 pointee 上的 taint
+                
+                    for (PointerPointsTo *pto : *srcptos) {
+                        if (!pto || !pto->targetObject) continue;
+                
+                        AliasObject *obj = pto->targetObject;
+                        long fieldId = pto->dstfieldId;
+                
+                        std::set<TaintFlag*> fieldTaintInfo;
+                        // 这几个 bool 参数要按照你项目里 getFieldTaintInfo 的签名来
+                        obj->getFieldTaintInfo(pto->dstfieldId, fieldTaintInfo, new InstLoc(&I,this->currFuncCallSites1),true);
+                        // 把这个字段上的 taint 合并进总集合
+                        memTaints.insert(fieldTaintInfo.begin(), fieldTaintInfo.end());
+                    }
+                    if (!memTaints.empty()) {
+                        std::set<std::vector<InstLoc*>*> tchains;
+                        this->currState.getAllUserTaintChains(&memTaints, tchains);
+                        if (!tchains.empty()) {
+                            dbgs() << "\033[31m[TPD] memcpy src memory HAS user taint!\033[0m\n";
+                            if_taint = true;
+                        }
+                    }
+                }
+
+                if (if_global && if_taint){
+                    dbgs() << "\033[103;30m[VUL] Store taint value in global!\033[0m\n";
+                }
+            }
+// ========================================================================================================
             if(currChecker->is_copy_out_function(targetFunction) ||
                currChecker->is_taint_initiator(targetFunction)) {
                 // if this is a copy_from_user method?
