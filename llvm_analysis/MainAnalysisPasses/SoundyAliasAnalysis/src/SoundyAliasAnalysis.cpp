@@ -40,8 +40,8 @@ namespace DRCHECKER {
 
 //#define DEBUG_SCC_GRAPH
 //#define DEBUG_TRAVERSAL_ORDER
-//#define DEBUG_GLOBAL_VARIABLES
-//#define DEBUG_GLOBAL_TAINT
+#define DEBUG_GLOBAL_VARIABLES
+#define DEBUG_GLOBAL_TAINT
 
 #define NETDEV_IOCTL "NETDEV_IOCTL"
 #define READ_HDR "READ_HDR"
@@ -52,6 +52,9 @@ namespace DRCHECKER {
 #define V4L2_IOCTL_FUNC "V4IOCTL"
 #define NULL_ARG "NULL_ARG"
 #define MY_IOCTL "MY_IOCTL"
+//  dbgs() << "\033[32m[GREEN] Hello from TaintAnalysisVisitor!\033[0m\n";
+#define GREEN "\033[32m"
+#define RESET "\033[0m\n"
 
     std::map<Value *, std::set<PointerPointsTo*>*> GlobalState::globalVariables;
     std::map<Function *, std::set<BasicBlock*>*> GlobalState::loopExitBlocks;
@@ -274,7 +277,6 @@ namespace DRCHECKER {
         }
 
         bool runOnModule(Module &m) override {
-
             FunctionChecker* targetChecker = new KernelFunctionChecker();
             // create data layout for the current module
             DataLayout *currDataLayout = new DataLayout(&m);
@@ -315,6 +317,7 @@ namespace DRCHECKER {
                 dbgs() << "Analyzing: " << toAnalyzeInitFunctions.size() << " init functions\n";
                 for(auto currInitFunc : toAnalyzeInitFunctions) {
                     dbgs() << "CTX: " << currInitFunc->getName() << " ->\n";
+                    std::cout << GREEN << "CTX: " << currInitFunc->getName().str() << " ->\n" << RESET;
 #ifdef TIMING
                     dbgs() << "[TIMING] Start func(1) " << currInitFunc->getName() << ": ";
                     auto t0 = InstructionUtils::getCurTime(&dbgs());
@@ -349,6 +352,7 @@ namespace DRCHECKER {
             auto t_prev = std::chrono::system_clock::now();
             auto t_next = t_prev;
             dbgs() << "=========================Main Analysis Phase=========================\n";
+            dbgs() << "\033[32m[GREEN] Hello from TaintAnalysisVisitor!\033[0m\n";
             currState.analysis_phase = 2;
             for (FuncInf *fi : targetFuncs) {
                 if (!fi || !fi->func || fi->func->isDeclaration()) {
@@ -358,6 +362,9 @@ namespace DRCHECKER {
                 Function &currFunction = *(fi->func);
 
                 std::vector<std::vector<BasicBlock *> *> *traversalOrder = BBTraversalHelper::getSCCTraversalOrder(currFunction);
+                std::cout << "\033[32mGot Traversal order For: "
+                << currFunction.getName().str()
+                << "\033[0m\n";
 #ifdef DEBUG_TRAVERSAL_ORDER
                 std::cout << "Got Traversal order For: " << currFunction.getName().str() << "\n";
                 BBTraversalHelper::printSCCTraversalOrder(traversalOrder,&dbgs());
@@ -815,7 +822,7 @@ namespace DRCHECKER {
                     }
                 }
 #ifdef DEBUG_GLOBAL_TAINT
-                dbgs() << "addGlobalTaintSource(): Set the glob var as taint source: " << InstructionUtils::getValueStr(v) << "\n";
+                dbgs() << "\033[33maddGlobalTaintSource(): Set the glob var as taint source: \033[0m" << InstructionUtils::getValueStr(v) << "\n";
 #endif
                 InstLoc *loc = new InstLoc(v,nullptr);
                 for(auto const &p : *ps){
@@ -828,7 +835,7 @@ namespace DRCHECKER {
                     }
                     p->targetObject->setAsTaintSrc(loc,true);
 #ifdef DEBUG_GLOBAL_TAINT
-                    dbgs() << "addGlobalTaintSource(): Set the alias obj as taint source:\n";
+                    dbgs() << "\033[33maddGlobalTaintSource(): Set the alias obj as taint source:\n\033[0m";
                     dbgs() << "Object Type: " << InstructionUtils::getTypeStr(p->targetObject->targetType) << "\n";
                     dbgs() << " Object Ptr: " << InstructionUtils::getValueStr(p->targetObject->getObjectPtr()) << "\n";
 #endif

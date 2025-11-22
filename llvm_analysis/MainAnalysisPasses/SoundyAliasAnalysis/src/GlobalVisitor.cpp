@@ -338,7 +338,8 @@ out:
             this->currState.numTimeAnalyzed[BB] = 1;
         }
 #ifdef DEBUG_BB_VISIT
-        dbgs() << "Starting to analyze BB:" <<  BB->getName().str() << ":at:"<< BB->getParent()->getName() << "\n";
+        /// dbgs() << "Starting to analyze BB:" <<  BB->getName().str() << ":at:"<< BB->getParent()->getName() << "\n";
+        dbgs() << "\033[32mStarting to analyze BB:" <<  BB->getName().str() << ":at:"<< BB->getParent()->getName().str() << "\033[0m\n";
         /*
         dbgs() << "<<<<\n";
         BB->print(dbgs());

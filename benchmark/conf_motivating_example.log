@@ -1,0 +1,475 @@
+@d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !0 NUM USES:3, TYPE:%struct.data*
+For:d: of type (1,1,0):%struct.data*:%struct.data = type { i32, [4 x i8] }, Struct Type:1
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0xf9ea60
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0xf9eb10, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0xfa09f0):struct.data|-1(OBJ:0xf9ea60,G:1) TF(0xfa0a20)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0xf9ea60
+AliasObject::setAsTaintSrc(): Adding taint to: 0xf9ea60 | 0
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 0 obj: 0xf9ea60
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0xf6dcd0, Host: 0xf9ea60
+FieldTaint::addTf(): +++TF: TAG(0xfa0b70):struct.data|0(OBJ:0xf9ea60,G:1) TF(0xfa0ba0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0xf9ea60 | 1
+AliasObject::addFieldTaintFlag(): %struct.data = type { i32, [4 x i8] } | 1 obj: 0xf9ea60
+FieldTaint::addTf(): add TF for field 1, FieldTaint: 0xfa0d60, Host: 0xf9ea60
+FieldTaint::addTf(): +++TF: TAG(0xfa0cc0):struct.data|1(OBJ:0xf9ea60,G:1) TF(0xfa0cf0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+getTargetFunctions: Functions to analyze:
+FUNC: entry0 PTR: 0xf6add8 TYPE: MY_IOCTL USER_ARGS: 1
+FUNC: entry1 PTR: 0xf6af88 TYPE: NULL_ARG USER_ARGS:
+FUNC: entry2 PTR: 0xf6b018 TYPE: NULL_ARG USER_ARGS:
+[TIMING] Analysis starts at: Thu Nov 20 06:36:33 2025
+
+=========================Preliminary Analysis Phase=========================
+=========================Main Analysis Phase=========================
+[32m[GREEN] Hello from TaintAnalysisVisitor![0m
+TaintUtils::updateTaintInfo() for: i8 %1
+No existing taint info, insert all 1
++++TF: TAG(0xfa1540):i8|0(OBJ:0x0,G:0) TF(0xfa1570)  FROM:   %3 = icmp eq i32 %0, 0, !dbg !31 (entry0 -> ) TO:   %3 = icmp eq i32 %0, 0, !dbg !31 (entry0 -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
+CTX: entry0 ->
+[TIMING] Start func(1) entry0: Thu Nov 20 06:36:33 2025
+
+[32mStarting to analyze BB::at:entry0[0m
+PathAnalysisVisitor::visitBranchInst(): Processing BR:   br i1 %3, label %4, label %5, !dbg !31, pred: 32, sc: 0, uc: 0
+[32mStarting to analyze BB::at:entry0[0m
+GlobalVisitor::processCalledFunction: prepare context for: foo (w/ definition)
+AliasAnalysisVisitor::visitCallInst():   %6 = call i32 @foo(i32 %0, i8 signext %1), !dbg !38
+PathAnalysisVisitor::visitCallInst():   %6 = call i32 @foo(i32 %0, i8 signext %1), !dbg !38, callee: foo
+PathAnalysisVisitor::visitCallInst(): propagate constraint for arg 0: i32 %0 -> i32 %0, constraint: (distinct |16218624| #x0000000000000000)
+Analyzing new function: foo Call depth: 3
+CTX: entry0 -> foo -> 
+[TIMING] Start func(3) foo: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:foo[0m
+PathAnalysisVisitor::visitBranchInst(): Processing BR:   br i1 %3, label %4, label %5, !dbg !33, pred: 32, sc: 0, uc: 0
+GlobalVisitor::analyze(): skip the BB since it's infeasible: %4
+[32mStarting to analyze BB::at:foo[0m
+[TIMING] End func(3) foo in: 8.156442e-03s
+CTX: entry0 -> 
+[32mStarting to analyze BB::at:entry0[0m
+AliasAnalysisVisitor::visitStoreInst():   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34
+AliasAnalysisVisitor::handleInlinePointerOp(): Dealing w/ the embedded GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::visitGetElementPtrOperator():   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34
+GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::processGEPFirstDimension():: basePointerTy: %struct.data*
+AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 0
+About to process index: 1
+Index value: 1
+AliasAnalysisVisitor::makePointsToCopy(): #elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy(): basePointerType: %struct.data* cur pto: %struct.data = type { i32, [4 x i8] } | 0, obj: 0xf9ea60 dst fid: 1
+AliasAnalysisVisitor::makePointsToCopy(): ++ ret pto: %struct.data = type { i32, [4 x i8] } | 1, obj: 0xf9ea60
+AliasAnalysisVisitor::makePointsToCopy(): #ret: 1
+About to process index: 2
+Index value: 0
+subGEP:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+resGEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::makePointsToCopy_emb(): elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy_emb(): host_type: %struct.data = type { i32, [4 x i8] } | 1
+AliasAnalysisVisitor::makePointsToCopy_emb(): ety: [4 x i8] | 0
+AliasAnalysisVisitor::makePointsToCopy_emb(): trying to get/create an object for the embedded struct/array..
+AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0xf9ea60
+AliasObject::createEmbObj(): ety: [4 x i8] expectedPointeeTy: [4 x i8]
+AliasObject::createEmbObj(): try to create a new embed object because there is no emb obj in cache...
+createOutsideObj():   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1  |   : [4 x i8]*
+createOutsideObj(): Try to create new outside object.
+createOutsideObj(): New obj created: 0x12bc680
+AliasObject::createEmbObj(): the embedded obj created: 0xf9ea60 | 1 --> 0x12bc680
+AliasObject::createEmbObj(): set the emb obj as a taint source since its host obj is so, is_taint_src: 1
+!!! AliasObject::createEmbObj(): cannot find the InstLoc in host inherent taint flag!
+AliasObject::setAsTaintSrc(): set as taint src, obj: 0x12bc680
+FieldTaint::addTf(): add TF for field -1, FieldTaint: 0x12bc730, Host: 0x0
+FieldTaint::addTf(): +++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x120f6c0)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Updating field taint for obj: 0x12bc680
+AliasObject::setAsTaintSrc(): Adding taint to: 0x12bc680 | 0
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x12c9ea0, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: TAG(0x10372b0):[i8]*4|0(OBJ:0x12bc680,G:1) TF(0x12ab330)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x12bc680 | 1
+AliasObject::addFieldTaintFlag(): [4 x i8] | 1 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 1, FieldTaint: 0x1171470, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: TAG(0xffe860):[i8]*4|1(OBJ:0x12bc680,G:1) TF(0x1077a00)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x12bc680 | 2
+AliasObject::addFieldTaintFlag(): [4 x i8] | 2 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 2, FieldTaint: 0x110c750, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: TAG(0x10c7fe0):[i8]*4|2(OBJ:0x12bc680,G:1) TF(0x1249f40)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+AliasObject::setAsTaintSrc(): Adding taint to: 0x12bc680 | 3
+AliasObject::addFieldTaintFlag(): [4 x i8] | 3 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 3, FieldTaint: 0x10121f0, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: TAG(0x124a010):[i8]*4|3(OBJ:0x12bc680,G:1) TF(0x124a040)  FROM:  TO:  tr_len: 0 tan/inh/act/wea: 1/1/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 1/1/1/1/0
+FieldTaint::getTf(): fetch taint for field: 1, FieldTaint: 0xfa0d60, Host: 0xf9ea60
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+AliasObject::createEmbObj(): try to taint the emb obj (all fields), #TaintFlag: 1
+updatePointsToObjects for :   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: [4 x i8]
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+AliasAnalysisVisitor::processMultiDimensionGEP(): updating the point-to for current GEP...
+updatePointsToObjects for : i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+InstructionUtils::inferPointeeTy() for: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+InstructionUtils::inferPointeeTy(): candidate types: i8 | 
+InstructionUtils::inferPointeeTy(): res type: i8
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+visitStoreInst(): src does not point to anything: i8 %1; Ignoring.
+TaintAnalysisVisitor::visitStoreInst():   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x12c9ea0, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: TAG(0xfa1540):i8|0(OBJ:0x0,G:0) TF(0x12b5d30)  FROM:   %3 = icmp eq i32 %0, 0, !dbg !31 (entry0 -> ) TO:   store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34 (entry0 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 2/2/2/1/0
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 1.379600e-04s
+[32mStarting to analyze BB::at:entry0[0m
+[TIMING] End func(1) entry0 in: 6.506330e-02s
+[TIMING] Anlysis of entry0 done in : 6.730515e-02s
+[TIMING] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+CTX: entry1 ->
+[TIMING] Start func(1) entry1: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:entry1[0m
+GlobalVisitor::processCalledFunction: prepare context for: bar (w/ definition)
+AliasAnalysisVisitor::visitCallInst():   %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27
+AliasAnalysisVisitor::handleInlinePointerOp(): Got pto by stripping cast: i8* bitcast (%struct.data* @d to i8*) -> @d = common dso_local global %struct.data zeroinitializer, align 4, !dbg !0
+AliasAnalysisVisitor::setupCallContext(): arg 1 has points to information
+PathAnalysisVisitor::visitCallInst():   %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27, callee: bar
+Analyzing new function: bar Call depth: 3
+CTX: entry1 -> bar -> 
+[TIMING] Start func(3) bar: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:bar[0m
+AliasAnalysisVisitor::visitGetElementPtrInst():   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30
+AliasAnalysisVisitor::processGEPFirstDimension():: basePointerTy: i8*
+AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 4
+AliasAnalysisVisitor::processGEPFirstDimension(): basePointeeTy size: 8, is_primitive: 1
+AliasAnalysisVisitor::processGEPFirstDimension(): invoke bit2Field()...
+AliasAnalysisVisitor::bit2Field(): host obj: %struct.data = type { i32, [4 x i8] } | 0 obj ID: 0xf9ea60
+AliasAnalysisVisitor::bit2Field(): dstOffset(org_dstOffset): 0(0) bits(org_bits): 32(32) resOffset: 32
+AliasAnalysisVisitor::bit2Field(): current container object can satisfy the result offset!
+AliasAnalysisVisitor::processMultiDimensionGEP(): updating the point-to for current GEP...
+updatePointsToObjects for :   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30
+InstructionUtils::inferPointeeTy() for:   %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30
+InstructionUtils::inferPointeeTy(): candidate types: i8 | 
+InstructionUtils::inferPointeeTy(): res type: i8
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
+AliasAnalysisVisitor::matchPtoTy(): We need to adjust the current pto to an embedded field to match the srcPointer!
+AliasObject::getNestedObj(): 0xf9ea60 | 1 : [4 x i8]
+AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0xf9ea60
+AliasObject::createEmbObj(): ety: [4 x i8] expectedPointeeTy: 
+AliasObject::createEmbObj(): find the previosuly created embed object: 0x12bc680
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+[TIMING] AliasAnalysisVisitor::visitGetElementPtrInst(): 6.779660e-04s
+AliasAnalysisVisitor::visitLoadInst():   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32
+
+*********FieldAccess(FETCH)**********
+Current Inst:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32
+[4 x i8] | 0 OBJ: 0x12bc680
+Object Ptr:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+*******************
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::fetchPointsToObjects: equivalent obj|field identified, cnt: 2
+AliasObject::fetchPointsToObjects: ~~>[EQV OBJ] 0x12bc680|-1
+
+*********FieldAccess(FETCH)**********
+Current Inst:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32
+[4 x i8] | -1 OBJ: 0x12bc680
+Object Ptr:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+*******************
+AliasObject::getNestedObj(): 0x12bc680 | -1 : i8
+AliasObject::fetchPointsToObjects: No existing pto records for the field, try to create a dummy obj.
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::createFieldPointee(): cannot decide the type of the dummy obj!
+AliasAnalysisVisitor::visitLoadInst(): #targetObjects: 1 #finalObjects: 0
+[TIMING] AliasAnalysisVisitor::visitLoadInst(): 4.009850e-04s
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::getFieldTaintInfo(): ~~>[EQV OBJ] 0x12bc680|-1
+FieldTaint::getTf(): fetch taint for field: -1, FieldTaint: 0x12bc730, Host: 0x0
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+FieldTaint::getTf(): fetch taint for field: 0, FieldTaint: 0x12c9ea0, Host: 0x12bc680
+FieldTaint::resetTfs(): reset field (0, FieldTaint: 0x12c9ea0, Host: 0x12bc680) taint since we have switched to a new entry:   %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27/0 ,BB: %0/0 ,FUNC: entry1 ,SRC: motivating_example.c @ 35
+FieldTaint::getTf(): final stats: total/act_tan/ret: 2/2/2
+FieldTaint::getTf(): final stats: total/act_tan/ret: 2/1/2
+TaintUtils::updateTaintInfo() for:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32
+No existing taint info, insert all 2
++++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x1168550)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0x10372b0):[i8]*4|0(OBJ:0x12bc680,G:1) TF(0x11685c0)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
+[TIMING] TaintAnalysisVisitor::visitLoadInst(): 6.020650e-04s
+TaintUtils::updateTaintInfo() for:   %4 = add i8 %3, -16, !dbg !31
+No existing taint info, insert all 2
++++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x1168710)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %4 = add i8 %3, -16, !dbg !31 (entry1 -> bar -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0x10372b0):[i8]*4|0(OBJ:0x12bc680,G:1) TF(0x11687e0)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %4 = add i8 %3, -16, !dbg !31 (entry1 -> bar -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+AliasAnalysisVisitor::visitStoreInst():   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32
+visitStoreInst(): src does not point to anything:   %4 = add i8 %3, -16, !dbg !31; Ignoring.
+TaintAnalysisVisitor::visitStoreInst():   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32
+TaintAnalysisVisitor::visitStoreInst(): null TF or self-store detected, skip the TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x1168710)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %4 = add i8 %3, -16, !dbg !31 (entry1 -> bar -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+TaintAnalysisVisitor::visitStoreInst(): null TF or self-store detected, skip the TF: TAG(0x10372b0):[i8]*4|0(OBJ:0x12bc680,G:1) TF(0x11687e0)  FROM:   %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   %4 = add i8 %3, -16, !dbg !31 (entry1 -> bar -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x12c9ea0, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: NULL TF(0x1168a40)  FROM:   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 3/2/2/1/0
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 1.594130e-04s
+[TIMING] End func(3) bar in: 2.126198e-03s
+CTX: entry1 -> 
+AliasAnalysisVisitor::visitStoreInst():   store i8 0, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !28, !tbaa !29
+AliasAnalysisVisitor::handleInlinePointerOp(): Dealing w/ the embedded GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::visitGetElementPtrOperator():   store i8 0, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !28, !tbaa !29
+GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::processGEPFirstDimension():: basePointerTy: %struct.data*
+AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 0
+About to process index: 1
+Index value: 1
+AliasAnalysisVisitor::makePointsToCopy(): #elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy(): basePointerType: %struct.data* cur pto: %struct.data = type { i32, [4 x i8] } | 0, obj: 0xf9ea60 dst fid: 1
+AliasAnalysisVisitor::makePointsToCopy(): ++ ret pto: %struct.data = type { i32, [4 x i8] } | 1, obj: 0xf9ea60
+AliasAnalysisVisitor::makePointsToCopy(): #ret: 1
+About to process index: 2
+Index value: 0
+subGEP:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+resGEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+AliasAnalysisVisitor::makePointsToCopy_emb(): elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy_emb(): host_type: %struct.data = type { i32, [4 x i8] } | 1
+AliasAnalysisVisitor::makePointsToCopy_emb(): ety: [4 x i8] | 0
+AliasAnalysisVisitor::makePointsToCopy_emb(): trying to get/create an object for the embedded struct/array..
+AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0xf9ea60
+AliasObject::createEmbObj(): ety: [4 x i8] expectedPointeeTy: [4 x i8]
+AliasObject::createEmbObj(): find the previosuly created embed object: 0x12bc680
+updatePointsToObjects for :   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: [4 x i8]
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+AliasAnalysisVisitor::processMultiDimensionGEP(): updating the point-to for current GEP...
+updatePointsToObjects for : i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+InstructionUtils::inferPointeeTy() for: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0)
+InstructionUtils::inferPointeeTy(): res type: i8
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+visitStoreInst(): src does not point to anything: i8 0; Ignoring.
+TaintAnalysisVisitor::visitStoreInst():   store i8 0, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !28, !tbaa !29
+AliasObject::getNestedObj(): 0x12bc680 | 0 : i8
+AliasObject::addFieldTaintFlag(): [4 x i8] | 0 obj: 0x12bc680
+FieldTaint::addTf(): add TF for field 0, FieldTaint: 0x12c9ea0, Host: 0x12bc680
+FieldTaint::addTf(): +++TF: NULL TF(0x1168ad0)  FROM:   store i8 0, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !28, !tbaa !29 (entry1 -> ) TO:   store i8 0, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !28, !tbaa !29 (entry1 -> ) tr_len: 1 tan/inh/act/wea: 0/0/1/0
+FieldTaint::addTf(): ---TF: NULL TF(0x1168a40)  FROM:   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) TO:   store i8 %4, i8* %2, align 1, !dbg !31, !tbaa !32 (entry1 -> bar -> ) tr_len: 1 tan/inh/act/wea: 0/0/0/0
+FieldTaint::addTf(): post-stats: total/tan/act/inh/weak: 4/2/2/1/0
+[TIMING] TaintAnalysisVisitor::visitStoreInst(): 1.044370e-04s
+[TIMING] End func(1) entry1 in: 2.613824e-03s
+[TIMING] Anlysis of entry1 done in : 2.688273e-03s
+[TIMING] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+CTX: entry2 ->
+[TIMING] Start func(1) entry2: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:entry2[0m
+AliasAnalysisVisitor::visitLoadInst():   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33
+AliasAnalysisVisitor::handleInlinePointerOp(): Dealing w/ the embedded GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1)
+AliasAnalysisVisitor::visitGetElementPtrOperator():   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33
+GEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1)
+AliasAnalysisVisitor::processGEPFirstDimension():: basePointerTy: %struct.data*
+AliasAnalysisVisitor::processGEPFirstDimension(): 0st index: 0
+About to process index: 1
+Index value: 1
+AliasAnalysisVisitor::makePointsToCopy(): #elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy(): basePointerType: %struct.data* cur pto: %struct.data = type { i32, [4 x i8] } | 0, obj: 0xf9ea60 dst fid: 1
+AliasAnalysisVisitor::makePointsToCopy(): ++ ret pto: %struct.data = type { i32, [4 x i8] } | 1, obj: 0xf9ea60
+AliasAnalysisVisitor::makePointsToCopy(): #ret: 1
+About to process index: 2
+Index value: 1
+subGEP:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+resGEP: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1)
+AliasAnalysisVisitor::makePointsToCopy_emb(): elements in *srcPointsTo: 1 
+AliasAnalysisVisitor::makePointsToCopy_emb(): host_type: %struct.data = type { i32, [4 x i8] } | 1
+AliasAnalysisVisitor::makePointsToCopy_emb(): ety: [4 x i8] | 1
+AliasAnalysisVisitor::makePointsToCopy_emb(): trying to get/create an object for the embedded struct/array..
+AliasObject::createEmbObj(): host type: %struct.data = type { i32, [4 x i8] } | 1 ID: 0xf9ea60
+AliasObject::createEmbObj(): ety: [4 x i8] expectedPointeeTy: [4 x i8]
+AliasObject::createEmbObj(): find the previosuly created embed object: 0x12bc680
+updatePointsToObjects for :   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: [4 x i8]
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 0 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+AliasAnalysisVisitor::processMultiDimensionGEP(): updating the point-to for current GEP...
+updatePointsToObjects for : i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1)
+InstructionUtils::inferPointeeTy() for: i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1)
+InstructionUtils::inferPointeeTy(): candidate types: i8 | 
+InstructionUtils::inferPointeeTy(): res type: i8
+#newPointsToInfo: 1 #existingPointsTo: 0 expected pointee type: i8
+#matchedPtos: 1 #unmatchedPtos: 0
+++ PTO: [4 x i8] | 1 ,is_taint_src: 1, Obj ID: 0x12bc680, Inst/Val:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1, loadTag: 
+updatePointsToObjects: #After update: 1
+
+*********FieldAccess(FETCH)**********
+Current Inst:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33
+[4 x i8] | 1 OBJ: 0x12bc680
+Object Ptr:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+*******************
+AliasObject::getNestedObj(): 0x12bc680 | 1 : i8
+AliasObject::fetchPointsToObjects: equivalent obj|field identified, cnt: 2
+AliasObject::fetchPointsToObjects: ~~>[EQV OBJ] 0x12bc680|-1
+
+*********FieldAccess(FETCH)**********
+Current Inst:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33
+[4 x i8] | -1 OBJ: 0x12bc680
+Object Ptr:   <badref> = getelementptr %struct.data, %struct.data* @d, i64 0, i32 1
+*******************
+AliasObject::getNestedObj(): 0x12bc680 | -1 : i8
+AliasObject::resetPtos(): Reset field pto for: 0x12bc680 | -1, switch entry to:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: motivating_example.c @ 42
+AliasObject::fetchPointsToObjects: No existing pto records for the field, try to create a dummy obj.
+AliasObject::getNestedObj(): 0x12bc680 | 1 : i8
+AliasObject::createFieldPointee(): cannot decide the type of the dummy obj!
+AliasAnalysisVisitor::visitLoadInst(): #targetObjects: 1 #finalObjects: 0
+[TIMING] AliasAnalysisVisitor::visitLoadInst(): 3.679950e-04s
+AliasObject::getNestedObj(): 0x12bc680 | 1 : i8
+AliasObject::getFieldTaintInfo(): ~~>[EQV OBJ] 0x12bc680|-1
+FieldTaint::getTf(): fetch taint for field: -1, FieldTaint: 0x12bc730, Host: 0x0
+FieldTaint::resetTfs(): reset field (-1, FieldTaint: 0x12bc730, Host: 0x0) taint since we have switched to a new entry:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33/0 ,BB: %0/0 ,FUNC: entry2 ,SRC: motivating_example.c @ 42
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+FieldTaint::getTf(): fetch taint for field: 1, FieldTaint: 0x1171470, Host: 0x12bc680
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/2
+TaintUtils::updateTaintInfo() for:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33
+No existing taint info, insert all 2
++++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x100dee0)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0xffe860):[i8]*4|1(OBJ:0x12bc680,G:1) TF(0x1168e20)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) tr_len: 1 tan/inh/act/wea: 1/0/1/0
+[TIMING] TaintAnalysisVisitor::visitLoadInst(): 1.721290e-04s
+TaintUtils::updateTaintInfo() for:   %2 = add i8 %1, -16, !dbg !36
+No existing taint info, insert all 2
++++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x100e020)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %2 = add i8 %1, -16, !dbg !36 (entry2 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0xffe860):[i8]*4|1(OBJ:0x12bc680,G:1) TF(0x100e0d0)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %2 = add i8 %1, -16, !dbg !36 (entry2 -> ) tr_len: 2 tan/inh/act/wea: 1/0/1/0
+AliasAnalysisVisitor::visitCastInst:   %3 = sext i8 %2 to i32, !dbg !38
+Convert: i8 --> i32
+srcOperand:   %2 = add i8 %1, -16, !dbg !36
+Ignoring casting as pointer does not point to anything
+TaintUtils::updateTaintInfo() for:   %3 = sext i8 %2 to i32, !dbg !38
+No existing taint info, insert all 2
++++TF: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1) TF(0x105e7d0)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %3 = sext i8 %2 to i32, !dbg !38 (entry2 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
++++TF: TAG(0xffe860):[i8]*4|1(OBJ:0x12bc680,G:1) TF(0x105e870)  FROM:   %1 = load i8, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 1), align 1, !dbg !32, !tbaa !33 (entry2 -> ) TO:   %3 = sext i8 %2 to i32, !dbg !38 (entry2 -> ) tr_len: 3 tan/inh/act/wea: 1/0/1/0
+GlobalVisitor::processCalledFunction: prepare context for: printf (w/o definition)
+AliasAnalysisVisitor::visitCallInst():   %4 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i64 0, i64 0), i32 %3), !dbg !39
+AliasAnalysisVisitor::visitCallInst(): Handle the Function: printf in the default way.
+AliasAnalysisVisitor::visitCallInst(): not handled!
+PathAnalysisVisitor::visitCallInst():   %4 = call i32 (i8*, ...) @printf(i8* nonnull dereferenceable(1) getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i64 0, i64 0), i32 %3), !dbg !39, callee: printf
+[TIMING] End func(1) entry2 in: 8.765310e-04s
+[TIMING] Anlysis of entry2 done in : 9.273220e-04s
+[TIMING] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+[TIMING] All main anlysis done in : 7.205468e-02s
+=========================Bug Detection Phase=========================
+[TIMING] Bug Detection Phase Starts : Thu Nov 20 06:36:34 2025
+
+CTX: entry0 ->
+[TIMING] Start func(1) entry0: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:entry0[0m
+[32mStarting to analyze BB::at:entry0[0m
+GlobalVisitor::processCalledFunction: prepare context for: foo (w/ definition)
+Analyzing new function: foo Call depth: 3
+CTX: entry0 -> foo -> 
+[TIMING] Start func(3) foo: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:foo[0m
+GlobalVisitor::analyze(): skip the BB since it's infeasible: %4
+[32mStarting to analyze BB::at:foo[0m
+[TIMING] End func(3) foo in: 5.109200e-05s
+CTX: entry0 -> 
+[32mStarting to analyze BB::at:entry0[0m
+[32mStarting to analyze BB::at:entry0[0m
+[TIMING] End func(1) entry0 in: 1.482250e-04s
+[TIMING][Bug-Detection] Anlysis of entry0 done in : 2.208310e-04s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+CTX: entry1 ->
+[TIMING] Start func(1) entry1: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:entry1[0m
+GlobalVisitor::processCalledFunction: prepare context for: bar (w/ definition)
+Analyzing new function: bar Call depth: 3
+CTX: entry1 -> bar -> 
+[TIMING] Start func(3) bar: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:bar[0m
+getAllUserTaintChains(): enum user taint chains for TF: 0x1168550 TAG: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1)
+ <~ 0x12bc680 [i8]*4|-1  [ enum eqv obj---
+getAllEquivelantObjs(): identify eq objs for: 0x12bc680
+getObjHierarchyTy(): enumeration done in: 4.947280e-04s
+---------[ST] Hierarchy Chain (1)---------
+0xf9ea60 struct.data|1 . 0x12bc680 [i8]*4|0
+---------[ED] Hierarchy Chain (1)---------
+getAllEquivelantObjs(): #accessPaths: 1
+---enum eqv obj #1 0x12bc680]
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+getAllUserTaintPaths(): eqv obj 0x12bc680 has #winnerTFs: 1
+ <~ (deadend)
+getAllUserTaintChains(): Got 0 user taint paths to the global tag.
+getAllUserTaintChains(): enum user taint chains for TF: 0x11685c0 TAG: TAG(0x10372b0):[i8]*4|0(OBJ:0x12bc680,G:1)
+ <~ 0x12bc680 [i8]*4|0  [ enum eqv obj---
+---enum eqv obj #1 0x12bc680]
+FieldTaint::getTf(): final stats: total/act_tan/ret: 4/1/0
+getAllUserTaintPaths(): eqv obj 0x12bc680 has #winnerTFs: 2
+ <~ 0x0 |0 <~ (user taint path ty-1)
+[CHAIN] <~ 0x12bc680 [i8]*4|0  <~ (deadend)
+getAllUserTaintChains(): Got 1 user taint paths to the global tag.
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+"warn_data":{"by":"IntegerOverflowDetector says:","warn_str":"Potential overflow, using tainted value in binary operation.","instr":"  %4 = add i8 %3, -16, !dbg !31","at_line":30,"at_file":"motivating_example.c","at_func":"bar","ctx":[{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30","at_line":30,"at_file":"motivating_example.c","at_func":"bar"}],"inst_trace_0":{"order":2,"tr":[{"instr":"  %3 = icmp eq i32 %0, 0, !dbg !31","at_line":18,"at_file":"motivating_example.c","at_func":"entry0","tag":"0xfa1540","tf":"0x12b5d30","icnt":2,"ctx":[{"instr":"  %3 = icmp eq i32 %0, 0, !dbg !31","at_line":18,"at_file":"motivating_example.c","at_func":"entry0"}]},{"instr":"  store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34","at_line":21,"at_file":"motivating_example.c","at_func":"entry0","ctx":[{"instr":"  %3 = icmp eq i32 %0, 0, !dbg !31","at_line":18,"at_file":"motivating_example.c","at_func":"entry0"}]},{"instr":"  %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32","at_line":30,"at_file":"motivating_example.c","at_func":"bar","tag":"0x10372b0","tf":"0x11685c0","icnt":1,"ctx":[{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30","at_line":30,"at_file":"motivating_example.c","at_func":"bar"}]},{"instr":"  %4 = add i8 %3, -16, !dbg !31","at_line":30,"at_file":"motivating_example.c","at_func":"bar","ctx":[{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27","at_line":35,"at_file":"motivating_example.c","at_func":"entry1"},{"instr":"  %2 = getelementptr inbounds i8, i8* %0, i64 4, !dbg !30","at_line":30,"at_file":"motivating_example.c","at_func":"bar"}]}]}}
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[TIMING] End func(3) bar in: 1.610854e-03s
+CTX: entry1 -> 
+[TIMING] End func(1) entry1 in: 1.672463e-03s
+[TIMING][Bug-Detection] Anlysis of entry1 done in : 1.700397e-03s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+CTX: entry2 ->
+[TIMING] Start func(1) entry2: Thu Nov 20 06:36:34 2025
+
+[32mStarting to analyze BB::at:entry2[0m
+getAllUserTaintChains(): enum user taint chains for TF: 0x100dee0 TAG: TAG(0xfd4770):[i8]*4|-1(OBJ:0x12bc680,G:1)
+getAllUserTaintChains(): Got 0 user taint paths to the global tag.
+getAllUserTaintChains(): enum user taint chains for TF: 0x1168e20 TAG: TAG(0xffe860):[i8]*4|1(OBJ:0x12bc680,G:1)
+ <~ 0x12bc680 [i8]*4|1  [ enum eqv obj---
+---enum eqv obj #1 0x12bc680]
+FieldTaint::getTf(): final stats: total/act_tan/ret: 1/1/1
+getAllUserTaintPaths(): eqv obj 0x12bc680 has #winnerTFs: 1
+ <~ (deadend)
+getAllUserTaintChains(): Got 0 user taint paths to the global tag.
+GlobalVisitor::processCalledFunction: prepare context for: printf (w/o definition)
+[TIMING] End func(1) entry2 in: 1.701010e-04s
+[TIMING][Bug-Detection] Anlysis of entry2 done in : 2.105600e-04s
+[TIMING][Bug-Detection] Clean up GlobalVisitor at: Thu Nov 20 06:36:34 2025
+
+[TIMING] Bug Detection Phase finished in : 2.123814e-03s
+[+] Writing output to:benchmark/conf_motivating_example.warn.json
+[+] Return message from file write:Success
+[+] Writing Instr output to:benchmark/conf_motivating_example.iwarn.json
+[+] Return message from file write:Success
+All done: Thu Nov 20 06:36:34 2025
+
+===-------------------------------------------------------------------------===
+                            Range Analysis algorithm
+===-------------------------------------------------------------------------===
+  Total Execution Time: 0.0025 seconds (0.0025 wall clock)
+
+   ---User Time---   --User+System--   ---Wall Time---  --- Name ---
+   0.0016 ( 62.9%)   0.0016 ( 62.9%)   0.0016 ( 62.8%)  Build constraint graph
+   0.0007 ( 29.3%)   0.0007 ( 29.3%)   0.0007 ( 29.5%)  Nuutila's algorithm for strongly connected components
+   0.0001 (  5.4%)   0.0001 (  5.4%)   0.0001 (  5.4%)  Constraint solving
+   0.0001 (  2.4%)   0.0001 (  2.4%)   0.0001 (  2.3%)  Compute statistics
+   0.0025 (100.0%)   0.0025 (100.0%)   0.0025 (100.0%)  Total
+
+[32mGot Traversal order For: entry0[0m
+[32mGot Traversal order For: entry1[0m
+[32mGot Traversal order For: entry2[0m

@@ -57,10 +57,10 @@ namespace DRCHECKER {
     std::set<TaintFlag*> *TaintAnalysisVisitor::makeTaintInfoCopy(Instruction *targetInstruction, std::set<TaintFlag*> *srcTaintInfo, 
                                                                   std::set<TaintFlag*> *dstTaintInfo) {
         if (srcTaintInfo != nullptr) {
-            std::set<TaintFlag*> *newTaintInfo = new std::set<TaintFlag*>();
-            InstLoc *loc = this->makeInstLoc(targetInstruction);
+            std::set<TaintFlag*> *newTaintInfo = new std::set<TaintFlag*>();  /// 空集合
+            InstLoc *loc = this->makeInstLoc(targetInstruction);  /// 根据目标指令构建InstLoc，包含 指令+上下文
             bool add_taint = false;
-            for (auto currTaint : *srcTaintInfo) {
+            for (auto currTaint : *srcTaintInfo) {               /// 遍历所有源污点
                 if (!currTaint) {
                     continue;
                 }
@@ -78,9 +78,9 @@ namespace DRCHECKER {
                 }
 #endif
                 if (add_taint) {
-                    TaintFlag *newTaintFlag = new TaintFlag(currTaint, loc);
-                    TaintAnalysisVisitor::addNewTaintFlag(newTaintInfo,newTaintFlag);
-                }else {
+                    TaintFlag *newTaintFlag = new TaintFlag(currTaint, loc);          /// 分配一个新的TF，使用
+                    TaintAnalysisVisitor::addNewTaintFlag(newTaintInfo,newTaintFlag); /// 就是将 newTaintFlag 加入到集合 newTaintInfo 中
+                }else {                                                               /// newTaintInfo 的作用就是将所有的源污点加入进来
 #ifdef DEBUG_ENFORCE_TAINT_PATH
                     dbgs() << "TaintAnalysisVisitor::makeTaintInfoCopy(): Failed to pass the taint path test, the TaintFlag:\n";
                     currTaint->dumpInfo(dbgs());
@@ -189,11 +189,11 @@ namespace DRCHECKER {
 
     std::set<TaintFlag*> *TaintAnalysisVisitor::mergeTaintInfo(std::set<Value*> &srcVals, Instruction *targetInstr) {
 
-        std::set<TaintFlag*> *newTaintInfo = new std::set<TaintFlag*>();
-        for(auto currVal : srcVals) {
-            std::set<TaintFlag*> *currValTaintInfo = this->getTFs(currVal);
+        std::set<TaintFlag*> *newTaintInfo = new std::set<TaintFlag*>();    /// 创建空集合
+        for(auto currVal : srcVals) {                                       /// 遍历每一个变量
+            std::set<TaintFlag*> *currValTaintInfo = this->getTFs(currVal); /// 得到变量的所有TF
             if(currValTaintInfo && !currValTaintInfo->empty()) {
-                this->makeTaintInfoCopy(targetInstr, currValTaintInfo, newTaintInfo);
+                this->makeTaintInfoCopy(targetInstr, currValTaintInfo, newTaintInfo); /// 将这个变量的所有TF加入到 newTaintInfo中
             }
         }
         // if there is no taint info?
@@ -202,7 +202,7 @@ namespace DRCHECKER {
             delete(newTaintInfo);
             newTaintInfo = nullptr;
         }
-        return newTaintInfo;
+        return newTaintInfo;                                                /// 得到一个包含所有变量的所有TF的集合
     }
 
     int TaintAnalysisVisitor::addNewTaintFlag(std::set<TaintFlag*> *newTaintInfo, TaintFlag *newTaintFlag) {

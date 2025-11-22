@@ -55,17 +55,17 @@ HANDLE_BINARY_INST(21, FDiv , BinaryOperator)
         // add both the operands into values to be checked.
         targetValues.insert(I.getOperand(0));
         targetValues.insert(I.getOperand(1));
-        for (auto currVal : targetValues) {
+        for (auto currVal : targetValues) {   /// 遍历每一个 value
             std::set<TaintFlag*> *srcTaintInfo = TaintUtils::getTaintInfo(this->currState,
                                                                           this->currFuncCallSites,
                                                                           currVal);
-            if (srcTaintInfo != nullptr) {
+            if (srcTaintInfo != nullptr) {   /// value 有污点
                 std::set<std::vector<InstLoc*>*> tchains;
                 this->currState.getAllUserTaintChains(srcTaintInfo,tchains);
                 if (tchains.empty()) {
                     //No taint from user inputs.
                     continue;
-                }
+                }                           /// value 的污点来自用户输入
                 std::string warningMsg = "Potential overflow, using tainted value in binary operation.";
                 VulnerabilityWarning *currWarning = new VulnerabilityWarning(this->currFuncCallSites,
                                                                             &tchains,

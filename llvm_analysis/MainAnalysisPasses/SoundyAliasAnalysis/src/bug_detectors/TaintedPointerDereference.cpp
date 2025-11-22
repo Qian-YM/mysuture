@@ -8,11 +8,12 @@
 using namespace llvm;
 
 #include "TaintUtils.h"
+#include "PointsToUtils.h"
 
 namespace DRCHECKER {
 
-/*#define DEBUG_LOAD_INSTR
-#define DEBUG_STORE_INSTR*/
+#define DEBUG_LOAD_INSTR
+#define DEBUG_STORE_INSTR
 #define ONLY_ONE_WARNING
 #define NO_POINTER_CHECK
 
@@ -62,9 +63,46 @@ namespace DRCHECKER {
             return;
         }
 #ifdef DEBUG_STORE_INSTR
-        dbgs() << TAG << " Visiting Store Instruction: " << InstructionUtils::getValueStr(&I) << "\n";
+        dbgs() << TAG << "\033[1;94m Visiting Store Instruction: \033[0m" << InstructionUtils::getValueStr(&I) << "\n";
 #endif
         Value *srcPointer = I.getPointerOperand();
+
+// ========================================================================================================================
+        Value *ptr = I.getPointerOperand();
+        Value *base = ptr;
+        dbgs() << "[DEBUG] ptr = " << InstructionUtils::getValueStr(base) << "\n";
+        
+        
+
+        while (true) {
+            base = base->stripPointerCasts();
+            if (auto *gep = dyn_cast<GetElementPtrInst>(base)) {
+                base = gep->getPointerOperand();
+                continue;
+            }
+            if (auto *ce = dyn_cast<ConstantExpr>(base)) {
+                if (ce->getOpcode() == Instruction::GetElementPtr) {
+                    base = ce->getOperand(0);  // GEP 的第一个操作数就是 base pointer（这里会是 @d）
+                    continue;
+                }
+            }
+            break;
+        }
+        std::set<PointerPointsTo*> *ptos = PointsToUtils::getPointsToObjects(this->currState, this->currFuncCallSites, base);
+        //dbgs() << "ptos -> " << ptos << "\n";
+        if(ptos){
+            for (PointerPointsTo *pto : *ptos) {
+                if(!pto) continue;
+                //dbgs() << "[TAR] " << pto->targetObject << "\n";
+                if(pto && pto->targetObject && pto->targetObject->isGlobalObject()){
+                    dbgs() << "\033[31m[TPD] store to global: " << "\033[0m\n";
+                }
+                
+            }
+        }
+
+// ========================================================================================================================
+
         std::set<TaintFlag*> *srcTaintInfo = TaintUtils::getTaintInfo(this->currState,
                                                                       this->currFuncCallSites,
                                                                       srcPointer);
@@ -93,6 +131,8 @@ namespace DRCHECKER {
             if(this->warnedInstructions.find(&I) == this->warnedInstructions.end()) {
                 this->warnedInstructions.insert(&I);
             }
+
+            
         }
     }
 

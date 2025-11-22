@@ -1,0 +1,23 @@
+=========================GROUP 0 (2 - 2)=========================
+#####Warned Insts#####
+('motivating_example.c', 30, ['IntegerOverflowDetector'])
+######################
+
+++++++++++++++++WARN 0 (2 - 2)++++++++++++++++
+IntegerOverflowDetector says: motivating_example.c@30 (bar :   %4 = add i8 %3, -16, !dbg !31)
+********Trace 0(2)********
+#####CTX##### entry0
+entry0 (motivating_example.c@18)
+#####INSTS#####
+>>>>>>>>>>>>>>>>>>tag: 0x9b4360 tf: 0xcc7d30 (2)>>>>>>>>>>>>>>>>>>
+motivating_example.c@18 (  %3 = icmp eq i32 %0, 0, !dbg !31)
+motivating_example.c@21 (  store i8 %1, i8* getelementptr inbounds (%struct.data, %struct.data* @d, i64 0, i32 1, i64 0), align 4, !dbg !32, !tbaa !34)
+#####CTX##### entry1 -> bar
+entry1 (motivating_example.c@35)
+----> (motivating_example.c@35 :   %1 = call i32 @bar(i8* bitcast (%struct.data* @d to i8*)), !dbg !27)
+bar (motivating_example.c@30)
+#####INSTS#####
+>>>>>>>>>>>>>>>>>>tag: 0xa492b0 tf: 0xb7a5c0 (1)>>>>>>>>>>>>>>>>>>
+motivating_example.c@30 (  %3 = load i8, i8* %2, align 1, !dbg !31, !tbaa !32)
+motivating_example.c@30 (  %4 = add i8 %3, -16, !dbg !31)
+
